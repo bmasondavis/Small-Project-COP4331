@@ -17,9 +17,32 @@ function dbQuery(value) {
 
 }
 
-function createAccount(name, email, pass) {
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
-	let accObj = {name: name, email: email, password: pass};
+function createAccount(name, email, pass) {
+let accObj = {name: name, email: email, password: pass};
+let jsonObj = stringify(accObj);
+xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+  	myObj = JSON.parse(this.responseText);
+   for(x in myObj) {
+   	txt += myObj[x].name + "<br>";
+   }
+   document.getElementById("demo").innerHTML = txt;
+  }
+};
+xmlhttp.open("POST", "json_demo_db.php?x=", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + jsonObj);
+
+
 }
 
 function login(email, pass) {
@@ -64,4 +87,5 @@ function createAccountBtn (){
 		errCheck = 1;
 
 	(errCheck == 0) ? alert("name: " + name + "\nemail: " + email + "\n password: " + pass) : alert("please check fields and try again.");
+	createAccount(name, email, pass);
 }
