@@ -18,8 +18,19 @@ function dbQuery(value) {
 }
 
 function createAccount(name, email, pass) {
+let accObj = {name: name, email: email, password: pass};
+let jsonFile = stringify(accObj);
 
-	let accObj = {name: name, email: email, password: pass};
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+};
+xmlhttp.open("GET", "json_demo_db.php?x=" + accObj, true);
+xmlhttp.send();
+
+
 }
 
 function login(email, pass) {
@@ -64,4 +75,5 @@ function createAccountBtn (){
 		errCheck = 1;
 
 	(errCheck == 0) ? alert("name: " + name + "\nemail: " + email + "\n password: " + pass) : alert("please check fields and try again.");
+	createAccount(name, email, pass);
 }
