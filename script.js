@@ -26,7 +26,7 @@ function setCookie(cname, cvalue, exdays) {
 
 function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
-let jsonObj = stringify(accObj);
+let jsonObj = JSON.stringify(accObj);
 xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
