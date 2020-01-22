@@ -26,7 +26,9 @@ function setCookie(cname, cvalue, exdays) {
 
 function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
+
 let jsonObj = JSON.stringify(accObj);
+console.log(jsonObj);
 xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
@@ -40,7 +42,7 @@ xmlhttp.onreadystatechange = function() {
 };
 xmlhttp.open("POST", "createaccount.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send("x=" + jsonObj);
+xmlhttp.send(jsonObj);
 
 
 }
