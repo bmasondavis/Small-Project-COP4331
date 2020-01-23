@@ -28,22 +28,19 @@ function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
 
 let jsonObj = JSON.stringify(accObj);
-console.log(jsonObj);
 xmlhttp = new XMLHttpRequest();
 
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-  	myObj = JSON.parse(this.responseText);
-   for(x in myObj) {
-   	txt += myObj[x].name + "<br>";
-   }
-   document.getElementById("demo").innerHTML = txt;
-  }
-};
 xmlhttp.open("POST", "createaccount.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
 
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+  	let myObj = this.responseText;
+  	let parseObj = JSON.parse(myObj);
+  }
+  console.log(parseObj);
+};
 
 }
 
