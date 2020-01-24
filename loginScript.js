@@ -43,8 +43,9 @@ xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
   	let myObj = this.responseText;
   	let parseObj = JSON.parse(myObj);
+	 console.log(parseObj);
   }
-  console.log(parseObj);
+  
 };
 }
 
