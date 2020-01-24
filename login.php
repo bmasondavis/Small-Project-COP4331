@@ -21,9 +21,10 @@ $pass = $data["password"];
 $sql = "select * from users where email = '$email' && password = '$pass'";
 //$sql2 = "select * from password where password = '$pass'";
 
-// Check the emails and pass to ensure
+// Check the emails and pass. 
 $row = $conn->query($sql);
 
+// If the user matches what is in the database, return the email. 
 if(mysqli_num_rows($row) === 1)
 {
     $success = array("Success", $email); 
@@ -31,6 +32,7 @@ if(mysqli_num_rows($row) === 1)
     // Write return message
 }
 
+// If it doesn't exist, then the user and password was incorrect. 
 else
 {
     $failure = array("Failure"); 
