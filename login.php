@@ -37,5 +37,5 @@ else
     echo json_encode($failure); 
 }
 
-
+$conn->close(); 
 ?>
