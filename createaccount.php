@@ -28,7 +28,7 @@ if (mysqli_num_rows($rows) < 1)
 if ($conn->query($sql) === TRUE) 
 {
 
-    $new = '{"email":' . $waah .'}';  
+    $new = '{"email":"' . $waah .'"}';  
     echo $new; 
 
 } 
