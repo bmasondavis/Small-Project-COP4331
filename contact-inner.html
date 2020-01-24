@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <link rel="stylesheet" href="contact-inner.css">
+  <script src="contact-inner.js"></script>
+  <title>Contact Manager</title>
+</head>
+<body>
+  <header>
+    <div class="navButtons">
+      <button class="LogOut" id="LogOut" >Log out</button>
+    </div>
+  </header>
+
+  <h2>Contact List<h2>
+
+  <div class="sidebar">
+    <!-- adding a new contact -->
+    <button onclick="addContact(name, phone, email)">+</button>
+      <!-- search bar -->
+    <input type="text" id="search" onkeyup="searchFunction()" name="search"
+      placeholder="Search" title="Type in a contact">
+  </div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openContact('Ben Affleck')"
+      id="defaultOpen">Ben Affleck</button>
+    <button class="tablinks" onclick="openContact('Robert Downey Jr.')">
+      Robert Downey Jr.</button>
+    <button class="tablinks" onclick="openContact('Morgan Freeman')">
+      Morgan Freeman</button>
+    <button class="tablinks" onclick="openContact('Gordon Ramsey')">
+      Gordon Ramsey</button>
+    <button class="tablinks" onclick="openContact('Tom Holland')">
+      Tom Holland</button>
+  </div>
+
+  <div id="Ben Affleck" class="tabcontent">
+    <h3>Ben Affleck</h3>
+    <p>Contact Info</p>
+  </div>
+  <div id="Robert Downey Jr." class="tabcontent" style="display: none">
+    <h3>Robert Downey Jr.</h3>
+    <p>Contact Info</p>
+  </div>
+  <div id="Morgan Freeman" class="tabcontent" style="display: none">
+    <h3>Morgan Freeman</h3>
+    <p>Contact Info</p>
+  </div>
+  <div id="Gordon Ramsey" class="tabcontent" style="display: none">
+    <h3>Gordon Ramsey</h3>
+    <p>Contact Info</p>
+  </div>
+  <div id="Tom Holland" class="tabcontent" style="display: none">
+    <h3>Tom Holland</h3>
+    <p>Contact Info</p>
+  </div>
+
+  <div id="contactPanel" class="panel" style="display: none">
+    <h1>Add a new contact</h1>
+    <div>
+      <label>
+        <input type="text" id="name" name="person" placeholder="Full Name" required/>
+      </label>
+      <label>
+        <!-- TODO: add different types of phone numbers -->
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required/>
+      </label>
+      <label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required/>
+      </label>
+    </div>
+    <!-- submit new contact -->
+    <div>
+      <button class="submit">Submit</button>
+    </div>
+  </div>
+
+  <img id="loadImage" src="img_avatar.png" class="image">
+  <!--
+  <div class="overlay">
+    <div class="text">Upload Photo</div>
+  </div>
+  -->
+</body>
+</html>
