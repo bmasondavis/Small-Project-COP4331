@@ -19,7 +19,6 @@ function dbQuery(value) {
 
 function populate(contacts) {
 	let btn = document.createElement("BUTTON");
-	
 }
 
 function setCookie(cname, cvalue, exdays) {
@@ -39,14 +38,9 @@ xmlhttp.open("POST", "createaccount.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
 
-xmlhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-  	let myObj = this.responseText;
-  	//let parseObj = JSON.parse(myObj);
-	 console.log(myObj);
-  }
-  
-};
+
+var myObj = this.responseText;
+ console.log(myObj);
 }
 
 function login(email, pass) {
