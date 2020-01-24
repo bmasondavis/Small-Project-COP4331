@@ -28,22 +28,23 @@ if (mysqli_num_rows($rows) < 1)
 if ($conn->query($sql) === TRUE) 
 {
 
-    $new = array("New Account", $name); 
-    echo json_encode($new); 
+    $new = '{"email":' . $waah .'}';  
+    echo $new; 
 
 } 
 // Error checking for shenanigans. 
 else 
 {
-    $error = array("Error"); 
-    echo json_encode($error); 
+    $error = '{"error":1}'; 
+    echo $error; 
 }
 }
 // If there is an existing account
 else
 {
     //send back account already exists
-    echo json_encode("Account Already Exists"); 
+    $account_exists = '{"accountAlreadyExists":2}'; 
+    echo $account_exists; 
 }
 $conn->close();
 ?>
