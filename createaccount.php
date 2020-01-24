@@ -2,7 +2,7 @@
 include("config.php");
 
 // Handling data in JSON format on the server-side using PHP
-header("Content-Type: application/json");
+//header("Content-Type: application/json");
 
 // Decode the file given by our front end. 
 $data = json_decode(file_get_contents('php://input'), true);
@@ -29,12 +29,16 @@ if ($conn->query($sql) === TRUE)
 {
 
     $new = '{"email":"' . $waah .'"}';  
+    //       '{"error":"' . $err . '"}';
+    header('Content-type: application/json');
+    //$new = '{"test":1}'; 
     echo $new; 
 
 } 
 // Error checking for shenanigans. 
 else 
 {
+    header('Content-type: application/json');
     $error = '{"error":1}'; 
     echo $error; 
 }
@@ -43,6 +47,7 @@ else
 else
 {
     //send back account already exists
+    header('Content-type: application/json');
     $account_exists = '{"accountAlreadyExists":2}'; 
     echo $account_exists; 
 }
