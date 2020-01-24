@@ -37,10 +37,9 @@ xmlhttp = new XMLHttpRequest();
 xmlhttp.open("POST", "createaccount.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
-
-
 var myObj = this.responseText;
- console.log(myObj);
+var parseObj = JSON.parse(myObj);
+ console.log(parseObj);
 }
 
 function login(email, pass) {
