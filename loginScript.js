@@ -32,14 +32,31 @@ function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
 
 let jsonObj = JSON.stringify(accObj);
-xmlhttp = new XMLHttpRequest();
+const xmlhttp = new XMLHttpRequest();
 
+xmlhttp.onreadystatechange = function() {
+let accObj = {name: name, email: email, password: pass};
+let jsonObj = JSON.stringify(accObj);
+
+xmlhttp = new XMLHttpRequest();
+if(xmlhttp.readyState == 4) {
+
+	if(xmlhttp.status == 200) {
+		console.log(xmlhttp.responseText);
+	} else {
+		console.warn("did not recieve 200 OK from response!");
+	}
+
+	if(xmlhttp.status == 404) {
+		console.log('File or resource not found');
+	}
+}
+
+};
 xmlhttp.open("POST", "createaccount.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
-var myObj = this.responseText;
-var parseObj = JSON.parse(myObj);
- console.log(parseObj);
+
 }
 
 function login(email, pass) {
@@ -60,6 +77,15 @@ function checkParam(field , param) {
 }
 
 function loginButton() {
+	let Obj = {
+"employees":[
+  {"firstName":"John", "lastName":"Doe"},
+  {"firstName":"Anna", "lastName":"Smith"},
+  {"firstName":"Peter", "lastName":"Jones"}
+]
+};
+let testObj = JSON.parse(Obj);
+console.log(testObj);
 	let errCheck = 0;
 	let email = document.getElementById('email1').value;
 	if(checkParam("email" , email) != 0)
