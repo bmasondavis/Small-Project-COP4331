@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <link rel="stylesheet" href="contact-inner.css">
+  <script src="contact-inner.js"></script>
+  <title>Contact Manager</title>
+</head>
+<body>
+
+  <div class="header">
+    <img src="ucf-logo.jpg" alt="logo"/>
+    <h1>Welcome back</h1>
+    <button class="logout" id="logout">Logout</button>
+  </div>
+  <!-- <h2>Contact List<h2> -->
+
+  <!-- Search and add new contacts -->
+  <div class="sidebar">
+    <button onclick="addContact(name, phone, email)">+</button>
+    <input type="text" id="search" onkeyup="searchFunction()" name="search"
+      placeholder="Search" title="Type in a contact">
+  </div>
+
+  <!-- List of current contacts -->
+  <!-- TODO: add delte button to each contact page -->
+  <div class="tab">
+    <ul id="tablinks">
+      <li onclick="openContact('Ben Affleck')"><a href="#">Ben Affleck</a></li>
+      <li onclick="openContact('Robert Downey Jr.')"><a href="#">Robert Downey Jr.</a></li>
+      <li onclick="openContact('Morgan Freeman')"><a href="#">Morgan Freeman</a></li>
+      <li onclick="openContact('Gordon Ramsey')"><a href="#">Gordon Ramsey</a></li>
+      <li onclick="openContact('Tom Holland')"><a href="#">Tom Holland</a></li>
+    </ul>
+  </div>
+
+  <!-- inner contact information -->
+  <div id="tabcontent">
+    <div id="Ben Affleck" class="tabcontent">
+      <h3>Ben Affleck</h3>
+      <p>Contact Info</p>
+    </div>
+    <div id="Robert Downey Jr." class="tabcontent" style="display: none">
+      <h3>Robert Downey Jr.</h3>
+      <p>Contact Info</p>
+    </div>
+    <div id="Morgan Freeman" class="tabcontent" style="display: none">
+      <h3>Morgan Freeman</h3>
+      <p>Contact Info</p>
+    </div>
+    <div id="Gordon Ramsey" class="tabcontent" style="display: none">
+      <h3>Gordon Ramsey</h3>
+      <p>Contact Info</p>
+    </div>
+    <div id="Tom Holland" class="tabcontent" style="display: none">
+      <h3>Tom Holland</h3>
+      <p>Contact Info</p>
+    </div>
+  </div>
+
+  <!-- Add new contact page -->
+  <div id="contactPanel" class="panel" style="display: none">
+    <h1>Add a new contact</h1>
+    <div>
+      <label>
+        <input type="text" id="name" name="person" placeholder="Full Name" required/>
+      </label>
+      <label>
+        <!-- TODO: add different types of phone numbers -->
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required/>
+      </label>
+      <label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required/>
+      </label>
+    </div>
+    <div>
+      <button class="submit">Submit</button>
+    </div>
+  </div>
+
+  <!-- Contact profile photo -->
+  <!-- TODO: add ability for user to upload photo -->
+  <img id="loadImage" src="img_avatar.png" class="image">
+  <!--
+  <div class="overlay">
+    <div class="text">Upload Photo</div>
+  </div>
+  -->
+</body>
+</html>
