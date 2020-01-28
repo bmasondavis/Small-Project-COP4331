@@ -32,7 +32,11 @@ function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
 
 let jsonObj = JSON.stringify(accObj);
-const xmlhttp = new XMLHttpRequest();
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.open("POST", "createaccount.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send(jsonObj);
+
 
 xmlhttp.onreadystatechange = function() {
 let accObj = {name: name, email: email, password: pass};
@@ -53,10 +57,6 @@ if(xmlhttp.readyState == 4) {
 }
 
 };
-xmlhttp.open("POST", "createaccount.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send(jsonObj);
-
 }
 
 function login(email, pass) {

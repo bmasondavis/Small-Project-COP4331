@@ -16,7 +16,7 @@ $eme = $data["password"];
 
 // Add the values into the database from the front end. 
 $sql = "INSERT INTO users (username, email, password) VALUES ('$woah','$waah','$eme')"; 
-$sql2 = "select * from users where username == '$woah'";
+$sql2 = "select * from users where username = '$woah'";
 
 // Query the database for an existing user. If there is no user, make an account. 
 $rows = $conn->query($sql2);
@@ -34,7 +34,7 @@ if ($conn->query($sql) === TRUE)
     //$new = '{"test":1}'; 
     echo $new; 
 
-} 
+}
 // Error checking for shenanigans. 
 else 
 {
