@@ -28,9 +28,10 @@ if (mysqli_num_rows($rows) < 1)
 if ($conn->query($sql) === TRUE) 
 {
 
-    $new = '{"email":"' . $waah .'"}';  
-    //       '{"error":"' . $err . '"}';
+     
+  
     header('Content-type: application/json');
+    $new = '{"email":"' . $waah .'"}'; 
     //$new = '{"test":1}'; 
     echo $new; 
 
