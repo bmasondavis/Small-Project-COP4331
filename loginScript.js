@@ -32,32 +32,23 @@ function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
 
 let jsonObj = JSON.stringify(accObj);
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.open("POST", "createaccount.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-xmlhttp.send(jsonObj);
-
+const xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
-let accObj = {name: name, email: email, password: pass};
-let jsonObj = JSON.stringify(accObj);
-
-xmlhttp = new XMLHttpRequest();
-if(xmlhttp.readyState == 4) {
-
-	if(xmlhttp.status == 200) {
-		console.log(xmlhttp.responseText);
-	} else {
-		console.warn("did not recieve 200 OK from response!");
-	}
-
-	if(xmlhttp.status == 404) {
-		console.log('File or resource not found');
-	}
-}
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+ 		console.log( xhttp.responseText);
+    }
 
 };
-}
+
+xmlhttp.open("GET", "createaccount.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send(jsonObj);
+};
+
+
+
 
 function login(email, pass) {
 
