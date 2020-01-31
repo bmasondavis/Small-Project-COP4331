@@ -3,7 +3,7 @@ include("config.php");
 
 
 // Handling data in JSON format on the server-side using PHP
-header("Content-Type: application/json");
+
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -19,7 +19,7 @@ $pass = $data["password"];
 //$sql2 = "select * from password where password = '$pass'";
 
 $sql = "select * from users where email = '$email' && password = '$pass'";
-//$sql2 = "select * from password where password = '$pass'";
+
 
 // Check the emails and pass. 
 $row = $conn->query($sql);
@@ -27,16 +27,20 @@ $row = $conn->query($sql);
 // If the user matches what is in the database, return the email. 
 if(mysqli_num_rows($row) === 1)
 {
-    $success = array("Success", $email); 
-    echo json_encode($success);
-    // Write return message
+    // 0 for error represents success. 
+    header("Content-Type: application/json");
+    $success = '{"error":0}';
+    echo $success; 
+
 }
 
 // If it doesn't exist, then the user and password was incorrect. 
 else
 {
-    $failure = array("Failure"); 
-    echo json_encode($failure); 
+    // 1 for error represents failure. 
+    header("Content-Type: application/json");
+    $failure = '{"error":1}';
+    echo $failure; 
 }
 
 $conn->close(); 
