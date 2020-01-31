@@ -31,8 +31,9 @@ if ($conn->query($sql) === TRUE)
      
   
     header('Content-type: application/json');
-    $new = '{"email":"' . $waah .'"}'; 
+    //$new = '{"email":"' . $waah .'"}'; 
     //$new = '{"test":1}'; 
+    $new = '{"accountCreated":0}';
     echo $new; 
 
 }
@@ -40,7 +41,7 @@ if ($conn->query($sql) === TRUE)
 else 
 {
     header('Content-type: application/json');
-    $error = '{"error":1}'; 
+    $error = '{"error":1000}'; 
     echo $error; 
 }
 }
@@ -49,7 +50,7 @@ else
 {
     //send back account already exists
     header('Content-type: application/json');
-    $account_exists = '{"accountAlreadyExists":"ok"}'; 
+    $account_exists = '{"accountAlreadyExists":1}'; 
     echo $account_exists; 
 }
 $conn->close();
