@@ -49,7 +49,7 @@ else
 {
     //send back account already exists
     header('Content-type: application/json');
-    $account_exists = '{"accountAlreadyExists":2}'; 
+    $account_exists = '{"accountAlreadyExists":"ok"}'; 
     echo $account_exists; 
 }
 $conn->close();
