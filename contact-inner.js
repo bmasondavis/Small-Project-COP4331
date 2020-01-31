@@ -2,27 +2,29 @@
 function openContact(contactName) {
   var i, x, tabcontent, tablinks;
 
+  // Display edit and delete buttons.
+  document.getElementById('delete').style.display = "block";
+  document.getElementById('edit').style.display = "block";
+
+	// Hide the "add new contact" page
+	x = document.getElementById('contactPanel');
+	x.style.display = 'none';
+
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
     tabcontent[i].style.display = "none";
   }
 
 	document.getElementById(contactName).style.display = "block";
-
-	// Load the profile image
-	document.getElementById('loadImage').style.visibility = 'visible';
-
-  // Load the delete button
-  document.getElementById('delete').style.display = 'block';
-
-	// Hide the "add new contact" page
-	x = document.getElementById("contactPanel");
-	x.style.display = 'none';
 }
 
 // A function to add a contact to the directory.
 function addContact(contactName, phone, email) {
 	var tabcontent, x = document.getElementById("contactPanel");
+
+  // Hide edit and delete buttons.
+  document.getElementById('delete').style.display = "none";
+  document.getElementById('edit').style.display = "none";
 
 	tabcontent = document.getElementsByClassName("tabcontent");
 

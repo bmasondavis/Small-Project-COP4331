@@ -1,3 +1,6 @@
+<!-- TODO: add edit functionality -->
+<!-- TODO: add clear functionality on add contact tab -->
+
 <!DOCTYPE html>
 
 <html>
@@ -8,10 +11,12 @@
 </head>
 <body>
 
-  <div class="header">
+  <div class="navbar">
     <img src="ucf-logo.jpg" alt="logo"/>
     <h1>Welcome back</h1>
-    <button class="logout" id="logout">Logout</button>
+    <div>
+      <button class="logout-btn">Logout</button>
+    </div>
   </div>
   <!-- <h2>Contact List<h2> -->
 
@@ -23,7 +28,6 @@
   </div>
 
   <!-- List of current contacts -->
-  <!-- TODO: add delte button to each contact page -->
   <div class="tab">
     <ul id="tablinks">
       <li onclick="openContact('Ben Affleck')"><a href="#">Ben Affleck</a></li>
@@ -38,23 +42,22 @@
   <div id="tabcontent">
     <div id="Ben Affleck" class="tabcontent">
       <h3>Ben Affleck</h3>
-      <p>Contact Info</p>
     </div>
     <div id="Robert Downey Jr." class="tabcontent" style="display: none">
       <h3>Robert Downey Jr.</h3>
-      <p>Contact Info</p>
     </div>
     <div id="Morgan Freeman" class="tabcontent" style="display: none">
       <h3>Morgan Freeman</h3>
-      <p>Contact Info</p>
     </div>
     <div id="Gordon Ramsey" class="tabcontent" style="display: none">
       <h3>Gordon Ramsey</h3>
-      <p>Contact Info</p>
     </div>
     <div id="Tom Holland" class="tabcontent" style="display: none">
       <h3>Tom Holland</h3>
-      <p>Contact Info</p>
+    </div>
+    <div>
+      <button class="tabcontent-btn" id="edit">Edit</button>
+      <button class="tabcontent-btn" id="delete">Delete</button>
     </div>
   </div>
 
@@ -73,18 +76,11 @@
         <input type="email" id="email" name="email" placeholder="Email Address" required/>
       </label>
     </div>
-    <div>
-      <button class="submit">Submit</button>
+    <div class="panel-btns">
+      <button class="action-btn" id="clear">Clear</button>
+      <button class="action-btn" id="submit">Submit</button>
     </div>
   </div>
 
-  <!-- Contact profile photo -->
-  <!-- TODO: add ability for user to upload photo -->
-  <img id="loadImage" src="img_avatar.png" class="image">
-  <!--
-  <div class="overlay">
-    <div class="text">Upload Photo</div>
-  </div>
-  -->
 </body>
 </html>
