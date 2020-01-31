@@ -32,27 +32,38 @@ function createAccount(name, email, pass) {
 let accObj = {name: name, email: email, password: pass};
 
 let jsonObj = JSON.stringify(accObj);
-var xmlhttp = new XMLHttpRequest();
-	
+const xmlhttp = new XMLHttpRequest();
+
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
-	    let responseObj = JSON.parse(xmlhttp.responseText);
- 		console.log(responseObj);
+       let responseObj = JSON.parse(xmlhttp.responseText);
+ 		console.log("error code: " + responseObj.error);
     }
 };
-		
-xmlhttp.open("POST", "createaccount.php", true);
-xmlhttp.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+xmlhttp.open("GET", "createaccount.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
-
-};
-
-
-
+}
 
 function login(email, pass) {
+	let loginInfo = {email: email, pass: pass};
+	let jsonObj = JSON.stringify(loginInfo);
+const xmlhttp = new XMLHttpRequest();
 
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       let response = JSON.parse(xmlhttp.responseText);
+ 		console.log(response);
+ 		if(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
+    }
+};
+
+xmlhttp.open("GET", "createaccount.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send(jsonObj);
 }
 
 function checkParam(field , param) {
@@ -69,15 +80,6 @@ function checkParam(field , param) {
 }
 
 function loginButton() {
-	let Obj = {
-"employees":[
-  {"firstName":"John", "lastName":"Doe"},
-  {"firstName":"Anna", "lastName":"Smith"},
-  {"firstName":"Peter", "lastName":"Jones"}
-]
-};
-let testObj = JSON.parse(Obj);
-console.log(testObj);
 	let errCheck = 0;
 	let email = document.getElementById('email1').value;
 	if(checkParam("email" , email) != 0)
@@ -85,9 +87,9 @@ console.log(testObj);
 	let pass = document.getElementById('password1').value;
 	if(checkParam("password" , pass) != 0)
 		errCheck = 1;
+	
 
-	(errCheck == 0) ? window.location.href= 'https://google.com' : alert("please check fields and try again.");
-
+	if(errCheck != 0) alert("please check fields and try again.");
 }
 
 function createAccountBtn (){
@@ -102,6 +104,5 @@ function createAccountBtn (){
 	if(checkParam("password" , pass) != 0)
 		errCheck = 1;
 
-	(errCheck == 0) ? alert("name: " + name + "\nemail: " + email + "\n password: " + pass) : alert("please check fields and try again.");
 	createAccount(name, email, pass);
 }
