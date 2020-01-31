@@ -89,7 +89,7 @@ function loginButton() {
 		errCheck = 1;
 	
 
-	if(errCheck != 0) alert("please check fields and try again.");
+	(errCheck != 0) alert("please check fields and try again.");
 }
 
 function createAccountBtn (){
