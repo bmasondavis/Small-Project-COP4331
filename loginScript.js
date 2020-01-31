@@ -57,7 +57,7 @@ xmlhttp.onreadystatechange = function() {
        // Typical action to be performed when the document is ready:
        let response = JSON.parse(xmlhttp.responseText);
  		console.log(response);
- 		if(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
+ 		(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
     }
 };
 
