@@ -29,7 +29,7 @@ if(mysqli_num_rows($row) === 1)
 {
     // 0 for error represents success. 
     header("Content-Type: application/json");
-    $success = '{"error":0}';
+    $success = '{"email":"' . $email . '", "password":"' . $pass . '"}';
     echo $success; 
 
 }
@@ -39,7 +39,7 @@ else
 {
     // 1 for error represents failure. 
     header("Content-Type: application/json");
-    $failure = '{"error":1}';
+    $failure = '{"Wrong User/Password ":1}';
     echo $failure; 
 }
 
