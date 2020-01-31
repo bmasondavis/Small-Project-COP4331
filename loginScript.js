@@ -37,7 +37,7 @@ var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
-	    let responseObj = JSON.parse(xmlhttp.responseText);
+	    let responseObj = JSON.parse(this.responseText);
  		console.log(responseObj);
     }
 };
