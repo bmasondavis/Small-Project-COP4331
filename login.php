@@ -39,7 +39,7 @@ else
 {
     // 1 for error represents failure. 
     header("Content-Type: application/json");
-    $failure = '{"Wrong User/Password ":1}';
+    $failure = '{"Wrong User/Password ":202}';
     echo $failure; 
 }
 
