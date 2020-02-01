@@ -27,9 +27,10 @@ $row = $conn->query($sql);
 // If the user matches what is in the database, return the email. 
 if(mysqli_num_rows($row) === 1)
 {
-    // 0 for error represents success. 
+    
     header("Content-Type: application/json");
-    $success = '{"email":"' . $email . '", "password":"' . $pass . '", "Login Successful":0}';
+    // This is for creating a successful account
+    $success = '{"email":"' . $email . '", "password":"' . $pass . '", "error":0}';
     echo $success; 
 
 }
@@ -37,9 +38,10 @@ if(mysqli_num_rows($row) === 1)
 // If it doesn't exist, then the user and password was incorrect. 
 else
 {
-    // 1 for error represents failure. 
+    
     header("Content-Type: application/json");
-    $failure = '{"email":"' . $email . '", "password":"' . $pass . '", "Invalid Credentials":302}';
+    // Invalid Credentials recieved. 
+    $failure = '{"email":"' . $email . '", "password":"' . $pass . '", "error":302}';
     echo $failure; 
 }
 
