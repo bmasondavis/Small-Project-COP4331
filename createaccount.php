@@ -41,7 +41,7 @@ if ($conn->query($sql) === TRUE)
 else 
 {
     header('Content-type: application/json');
-    $error = '{"error":1000}'; 
+    $error = '{"error":202}'; 
     echo $error; 
 }
 }
@@ -50,7 +50,7 @@ else
 {
     //send back account already exists
     header('Content-type: application/json');
-    $account_exists = '{"accountAlreadyExists":1}'; 
+    $account_exists = '{"accountAlreadyExists":301}'; 
     echo $account_exists; 
 }
 $conn->close();
