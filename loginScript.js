@@ -39,7 +39,7 @@ xmlhttp.onreadystatechange = function() {
        // Typical action to be performed when the document is ready:
        let responseObj = JSON.parse(xmlhttp.responseText);
        if(responseObj.error === 202) alert("error code: 202");
-       else (responseObj.error !== 0) ? console.log("Account already exists!") : console.log("Account created successfully!");
+       else (responseObj.error === 0) ? console.log("Account created successfully!" : console.log("Account already exists!"));
     }
 };
 
