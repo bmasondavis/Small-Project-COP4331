@@ -38,7 +38,8 @@ xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
        let responseObj = JSON.parse(xmlhttp.responseText);
- 		console.log("error code: " + responseObj.error);
+       if(responseObj.error === 202) alert("error code: 202");
+       else (responseObj.error !== 0) ? console.log("Account already exists!") : console.lost("Account created successfully!");
     }
 };
 
@@ -57,7 +58,7 @@ xmlhttp.onreadystatechange = function() {
        // Typical action to be performed when the document is ready:
        let response = JSON.parse(xmlhttp.responseText);
  		console.log(response);
- 		(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
+ 		if(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
     }
 };
 
@@ -87,9 +88,8 @@ function loginButton() {
 	let pass = document.getElementById('password1').value;
 	if(checkParam("password" , pass) != 0)
 		errCheck = 1;
-	
 
-	if(errCheck != 0) alert("please check fields and try again.");
+	(errCheck != 0) ? alert("please check fields and try again."): login(email, pass);
 }
 
 function createAccountBtn (){
