@@ -39,7 +39,7 @@ else
 {
     // 1 for error represents failure. 
     header("Content-Type: application/json");
-    $failure = '{"email":"' . $email . '", "password":"' . $pass . '","Invalid Credentials":302}';
+    $failure = '{"email":"' . $email . '", "password":"' . $pass . '", "Invalid Credentials":302}';
     echo $failure; 
 }
 
