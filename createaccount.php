@@ -33,7 +33,9 @@ if ($conn->query($sql) === TRUE)
     header('Content-type: application/json');
     //$new = '{"email":"' . $waah .'"}'; 
     //$new = '{"test":1}'; 
-    $new = '{"accountCreated":0}';
+ 
+    // This is for creating a successful account. 
+    $new = '{"error":0}';
     echo $new; 
 
 }
@@ -50,7 +52,9 @@ else
 {
     //send back account already exists
     header('Content-type: application/json');
-    $account_exists = '{"accountAlreadyExists":301}'; 
+ 
+    // This represent an account already existing
+    $account_exists = '{"error":301}'; 
     echo $account_exists; 
 }
 $conn->close();
