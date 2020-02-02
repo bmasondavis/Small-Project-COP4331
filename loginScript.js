@@ -40,7 +40,7 @@ xmlhttp.onreadystatechange = function() {
        let responseObj = JSON.parse(xmlhttp.responseText);
        console.log(xmlhttp.responseText);
        if(responseObj.error === 202) alert("error code: 202");
-       else (responseObj.error === 0) ? console.log("Account created successfully!") : console.log("Account already exists!");
+       else (responseObj.error === 0) ? window.location.href = 'contact-inner.html' : console.log("Account error");
     }
 };
 
