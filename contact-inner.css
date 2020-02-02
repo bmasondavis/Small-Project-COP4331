@@ -178,9 +178,9 @@ body {
 .panel .panel-btns {
   padding: 10px 24px;
   text-align: center;
+
   font-size: 16px;
   margin: 4px 2px;
-  opacity: 0.6;
   transition: 0.3s;
   text-decoration: none;
   cursor: pointer;
@@ -189,13 +189,14 @@ body {
   cursor: pointer;
 }
 
-.panel .panel-btns:hover {
-  opacity: 1;
-}
-
 .action-btn {
+  opacity: 0.8;
   padding: 10px 24px;
+  border-radius: 10%;
+  background-color: #070707;
+  color: #FFC100;
   text-align: center;
+  
   font-size: 16px;
   margin: 4px 2px;
   opacity: 0.6;
@@ -204,6 +205,11 @@ body {
   cursor: pointer;
   display: flex;
   cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: #FFC100;
+  color: #070707;
 }
 
 /* Style the contact picture */

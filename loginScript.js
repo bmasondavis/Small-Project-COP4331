@@ -40,7 +40,7 @@ xmlhttp.onreadystatechange = function() {
        let responseObj = JSON.parse(xmlhttp.responseText);
        console.log(xmlhttp.responseText);
        if(responseObj.error === 202) alert("error code: 202");
-       else (responseObj.error === 0) ? console.log("Account created successfully!" : console.log("Account already exists!"));
+       else (responseObj.error === 0) ? console.log("Account created successfully!") : console.log("Account already exists!");
     }
 };
 
@@ -59,7 +59,7 @@ xmlhttp.onreadystatechange = function() {
        // Typical action to be performed when the document is ready:
        let response = JSON.parse(xmlhttp.responseText);
  		console.log(response);
- 		(response.error == 0) ? window.location.href = 'https://google.com' : alert("login failed");
+ 		(response.error == 0) ? window.location.href = 'contact-inner.html' : alert("login failed");
     }
 };
 

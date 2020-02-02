@@ -1,4 +1,23 @@
 // A function to open a contact already in the directory.
+
+function buttonControls() {
+
+document.getElementById("submit").addEventListener('click', () =>{
+    var fieldEmpty = "";
+  if(document.getElementById("name").value === "")  fieldEmpty += "Must fill Name field!  ";
+  if(document.getElementById("phone").value === "")  fieldEmpty += "Must fill Phone Number field!  ";
+  if(document.getElementById("email").value === "")  fieldEmpty += "Must fill Email field!  ";
+  (fieldEmpty === "") ? createContact(document.getElementById("name").value, document.getElementById("phone").value,
+   document.getElementById("email").value) : alert(fieldEmpty);
+});
+
+document.getElementById("clear").addEventListener('click', () =>{
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
+});
+}
+
 function openContact(contactName) {
   var i, x, tabcontent, tablinks;
 
@@ -19,9 +38,9 @@ function openContact(contactName) {
 }
 
 // A function to add a contact to the directory.
-function addContact(contactName, phone, email) {
+function addContact() {
 	var tabcontent, x = document.getElementById("contactPanel");
-
+  buttonControls();
   // Hide edit and delete buttons.
   document.getElementById('delete').style.display = "none";
   document.getElementById('edit').style.display = "none";
@@ -37,6 +56,15 @@ function addContact(contactName, phone, email) {
 	} else {
 		x.style.display = "none";
 	}
+}
+
+function createContact(contactName, phone, email) {
+ let newA = document.createElement("a");
+ newA.setAttribute('href', '#');
+ newA.innerHTML = contactName;
+ document.createElement("li").appendChild(newA);
+ document.getElementById("tablinks").appendChild(newLi);
+
 }
 
 // A function to search for contacts in the directory.
