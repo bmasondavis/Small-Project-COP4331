@@ -8,20 +8,34 @@ include("config.php");
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Get the username, email, and password from the database. 
-$name = $data["name"];
-$email = $data["email"];
-$pass = $data["password"];
-$cid = $data["cid"];
+
+$fname = $data["firstname"];
+$lname = $data["lastname"];
+$phone = $data["phone"];
+$cemail = $data["cemail"];
+$uemail = $data["uemail"];
 
 // Add the values into the contacts from the front end. 
-$sql = "INSERT INTO contacts (username, email, password, cid) VALUES ('$name','$email','$pass', '$cid')"; 
-$sql2 = "select * from contacts where cid = '$cid'";
+$sql2 = "select uid from users where email = '$uemail'";
 
-// Query the database for an existing contact. If there is no contact, make an account. 
-$rows = $conn->query($sql2);
+// Pulls the uid from the cookie provided user email;
+$rows = fetch_assoc($conn->query($sql2));
+$uid = $rows["uid"];
+echo $uid;
+
+
+$sql = "INSERT INTO contacts (firstname, lastname, phone, email, uid) VALUES ('$fname','$lname','$phone', '$cemail', $uid)"; 
+if ($conn->query($sql) === TRUE)
+{
+    echo "contact successfully created";   
+}
+else
+{
+    echo "contact creation failed";
+}
 
 // If there is no existing contact, add it. 
-if (mysqli_num_rows($rows) < 1)
+/*if (mysqli_num_rows($rows) < 1)
 {
     // If this process worked....
     if ($conn->query($sql) === TRUE) 
@@ -48,6 +62,6 @@ else
     header('Content-type: application/json');
     $account_exists = '{"error":101}'; 
     echo $account_exists; 
-}
+} */
 $conn->close();
 ?>
