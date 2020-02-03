@@ -7,22 +7,25 @@ include("config.php");
 // Decode the file given by our front end. 
 $data = json_decode(file_get_contents('php://input'), true);
 
-
 // Get the username, email, and password from the database. 
-$name = $data["name"];
-$email = $data["email"];
-$pass = $data["password"];
-$cid = $data["cid"];
+$fname = $data["firstname"];
+$lname = $data["lastname"];
+$phone = $data["phone"];
+$cemail = $data["cemail"];
+$uemail = $data["uemail"];
 
+// Pulls the uid from the cookie provided user email.
+$sql2 = "select uid from users where email = '$uemail'";
+$rows = $conn->query($sql2);
+$result = mysqli_fetch_row($rows);
+$uid = $result[0];
+echo $uid;
 
 // Edit the contact in the server. 
-$sql = "UPDATE contacts SET username = '$name', email = '$email', password = '$pass' WHERE cid = '$cid'"; 
-
-// Double check 
-$sql2 = "select * from contacts where cid = '$cid'";
-
-// Query the database for an existing user. If there is no user, there is a problem. 
-$rows = $conn->query($sql2);
+// Potential error. Does update happen first, or does WHERE? If update, we need to redo.
+$sql = "UPDATE contacts SET firstname = '$fname', lastname = '$lname',
+                            phone = '$phone', cemail = '$cemail'
+                            WHERE uid = '$uid'"; 
 
 // If there is exactly one row, let the user edit. 
 if(mysqli_num_rows($rows) === 1)
@@ -36,7 +39,6 @@ if(mysqli_num_rows($rows) === 1)
     }
     
 }
-
 // If there is not one row, this means they are editing something that doesn't exist. Very bad! 
 else
 {
@@ -44,6 +46,5 @@ else
     $failure = '{"error":999}';
     echo $failure; 
 }
-
 $conn->close();
 ?>
