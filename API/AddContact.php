@@ -20,7 +20,7 @@ $sql2 = "select uid from users where email = '$uemail'";
 
 // Pulls the uid from the cookie provided user email;
 $rows = $conn->query($sql2);
-$result = mysql_fetch_row($rows)
+$result = mysql_fetch_row($rows);
 $uid = $result[0];
 echo $uid;
 
