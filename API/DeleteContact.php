@@ -13,6 +13,7 @@ $lname = $data["lastname"];
 $phone = $data["phone"];
 $cemail = $data["cemail"];
 $uemail = $data["uemail"];
+$cid = $data["cid"];
 
 // Pulls the uid from the cookie provided user email.
 $sql2 = "select uid from users where email = '$uemail'";
@@ -21,9 +22,9 @@ $result = mysqli_fetch_row($rows);
 $uid = $result[0];
 echo $uid;
 
-$sql = "DELETE FROM contacts WHERE uid = '$uid'"; 
+$sql = "DELETE FROM contacts WHERE cid = '$cid' && uid = '$uid'"; 
 
-// If there is one user, a delete can be successful. 
+// Verifying that a user exists 
 if (mysqli_num_rows($rows) === 1)
 {
     // Delete the requested info from the database. 
