@@ -127,10 +127,12 @@ body {
 
 /* Change background color of add button on hover */
 .sidebar button:hover {
-  background-color: #ddd;
+  background-color: #070707;
+  color: #FFC100;
 }
 
 .sidebar button.active {
+
   background-color: #ccc;
 }
 

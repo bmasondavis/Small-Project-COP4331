@@ -1,5 +1,9 @@
 // A function to open a contact already in the directory.
-
+function clearFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
+}
 function buttonControls() {
 
 document.getElementById("submit").addEventListener('click', () =>{
@@ -9,18 +13,14 @@ document.getElementById("submit").addEventListener('click', () =>{
   if(document.getElementById("email").value === "")  fieldEmpty += "Must fill Email field!  ";
   (fieldEmpty === "") ? createContact(document.getElementById("name").value, document.getElementById("phone").value,
    document.getElementById("email").value) : alert(fieldEmpty);
+  clearFields();
 });
 
-document.getElementById("clear").addEventListener('click', () =>{
-  document.getElementById("name").value = "";
-  document.getElementById("phone").value = "";
-  document.getElementById("email").value = "";
-});
+document.getElementById("clear").addEventListener('click', ()=> clearFields());
 }
 
 function openContact(contactName) {
   var i, x, tabcontent, tablinks;
-
   // Display edit and delete buttons.
   document.getElementById('delete').style.display = "block";
   document.getElementById('edit').style.display = "block";
@@ -28,13 +28,10 @@ function openContact(contactName) {
 	// Hide the "add new contact" page
 	x = document.getElementById('contactPanel');
 	x.style.display = 'none';
-
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-	document.getElementById(contactName).style.display = "block";
+  let contact = document.getElementById("contactInfo");
+  document.getElementById("contactHeader").innerHTML = contactName;
+	contact.style.display = "block";
+  document.getElementById("contactBtns").style.display = "block";
 }
 
 // A function to add a contact to the directory.
@@ -60,11 +57,12 @@ function addContact() {
 
 function createContact(contactName, phone, email) {
  let newA = document.createElement("a");
- newA.setAttribute('href', '#');
+ let newLi = document.createElement("li");
  newA.innerHTML = contactName;
- document.createElement("li").appendChild(newA);
+ newA.setAttribute('href', '#');
+ newLi.appendChild(newA);
+ newLi.addEventListener('click', ()=> openContact(contactName));
  document.getElementById("tablinks").appendChild(newLi);
-
 }
 
 // A function to search for contacts in the directory.
