@@ -10,14 +10,18 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // Get the username, email, and password from the database.
 $uemail = $data["uemail"];
-
+$searchstring = $data["searchstring"];
 // Pulls the uid from the cookie provided user email.
 $sql2 = "select uid from users where email = '$uemail'";
 $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
 
-$sql = "select firstname, lastname, phone, email, cid from contacts WHERE uid = '$uid'";
+SELECT ... WHERE column REGEXP '[[:<:]]$sub[[:>:]]
+
+
+// this aint gonna be pretty :^S
+$sql = "select firstname, lastname, phone, email, cid from contacts WHERE (lastname REGEXP '[[:<:]]$searchstring[[:>:]]' || firstname REGEXP '[[:<:]]$searchstring[[:>:]]') && uid = $uid";
 
 $contacts = array();
 // Verifying that a user exists
