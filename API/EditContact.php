@@ -25,8 +25,8 @@ echo $uid;
 // Potential error. Does update happen first, or does WHERE? If update, we need to redo. 
 
 // ^^^^ All happens at once, think of the later lines as constraints to the same call
-$sql = "UPDATE contacts SET firstname = '$fname', lastname = '$lname',
-                            phone = '$phone', cemail = '$cemail'
+$sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
+                            phone = '$phone', cemail = '$cemail')
                             WHERE cid = '$cid' && uid = '$uid'"; 
 
 // If there is exactly one row, let the user edit. 
