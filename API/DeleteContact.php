@@ -8,10 +8,10 @@ include("config.php");
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Get the username, email, and password from the database. 
-$fname = $data["firstname"];
-$lname = $data["lastname"];
-$phone = $data["phone"];
-$cemail = $data["cemail"];
+//$fname = $data["firstname"];
+//$lname = $data["lastname"];
+//$phone = $data["phone"];
+//$cemail = $data["cemail"];
 $uemail = $data["uemail"];
 $cid = $data["cid"];
 
