@@ -13,7 +13,7 @@ $lname = $data["lastname"];
 $phone = $data["phone"];
 $cemail = $data["cemail"];
 $uemail = $data["uemail"];
-
+$cid = $data["cid"];
 // Pulls the uid from the cookie provided user email.
 $sql2 = "select uid from users where email = '$uemail'";
 $rows = $conn->query($sql2);
@@ -22,10 +22,12 @@ $uid = $result[0];
 echo $uid;
 
 // Edit the contact in the server. 
-// Potential error. Does update happen first, or does WHERE? If update, we need to redo.
+// Potential error. Does update happen first, or does WHERE? If update, we need to redo. 
+
+// ^^^^ All happens at once, think of the later lines as constraints to the same call
 $sql = "UPDATE contacts SET firstname = '$fname', lastname = '$lname',
                             phone = '$phone', cemail = '$cemail'
-                            WHERE uid = '$uid'"; 
+                            WHERE cid = '$cid' && uid = '$uid'"; 
 
 // If there is exactly one row, let the user edit. 
 if(mysqli_num_rows($rows) === 1)
