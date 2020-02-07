@@ -1,11 +1,35 @@
 // A function to open a contact already in the directory.
+
+document.getElementById("logout-btn").addEventListener('click', ()=> {
+window.location.href = 'index.html';
+});
+
+function dbQuery(value) {
+let search = {searchstring: value};
+let jsonObj = JSON.stringify(search);
+const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       console.log(xmlhttp.responseText);
+       if(responseObj.error === 202) alert("error code: 202");
+       else (responseObj.error === 0) ? window.location.href = 'google.com' : console.log("Account error");
+    }
+  }
+}
+
+function populate(contacts) {
+  let btn = document.createElement("BUTTON");
+}
+
 function clearFields() {
   document.getElementById("name").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
 }
-function buttonControls() {
 
+function buttonControls() {
 document.getElementById("submit").addEventListener('click', () =>{
     var fieldEmpty = "";
   if(document.getElementById("name").value === "")  fieldEmpty += "Must fill Name field!  ";
