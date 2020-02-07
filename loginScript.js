@@ -44,7 +44,6 @@ function login(email, pass) {
 	let loginInfo = {email: email, pass: pass};
 	let jsonObj = JSON.stringify(loginInfo);
 const xmlhttp = new XMLHttpRequest();
-console.log("login happens");
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        // Typical action to be performed when the document is ready:
@@ -58,7 +57,7 @@ xmlhttp.onreadystatechange = function() {
     }
 };
 
-xmlhttp.open("POST", "login.php", true);
+xmlhttp.open("GET", "login.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
 }
@@ -80,7 +79,6 @@ function loginButton() {
 	let errCheck = 0;
 	let email = document.getElementById('email1').value;
 	let pass = document.getElementById('password1').value;
-	console.log("login happens");
 	if(errCheck == 0) login(email, pass);
 }
 
