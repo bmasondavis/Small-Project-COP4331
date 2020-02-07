@@ -17,7 +17,7 @@ $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
 
-SELECT ... WHERE column REGEXP '[[:<:]]$sub[[:>:]]
+//SELECT ... WHERE column REGEXP '[[:<:]]$sub[[:>:]]
 
 
 // this aint gonna be pretty :^S
