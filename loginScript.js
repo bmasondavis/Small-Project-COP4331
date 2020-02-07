@@ -13,19 +13,29 @@ signInButton.addEventListener('click', () =>{
 document.getElementById('loginBtn').addEventListener('click', ()=> loginButton());
 document.getElementById('createBtn').addEventListener('click', ()=> createAccountBtn());
 
-function dbQuery(value) {
-
-}
-
-function populate(contacts) {
-	let btn = document.createElement("BUTTON");
-}
-
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays*24*60*60*1000));
   var expires = "expires="+ d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i <ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  console.log("here");
+  return "";
 }
 
 function createAccount(name, email, pass) {
@@ -84,13 +94,13 @@ function checkParam(field , param) {
 function loginButton() {
 	let errCheck = 0;
 	let email = document.getElementById('email1').value;
-	if(checkParam("email" , email) != 0)
-		errCheck = 1;
+	
 	let pass = document.getElementById('password1').value;
-	if(checkParam("password" , pass) != 0)
-		errCheck = 1;
+	
+	Cookies.set("thisCookie", "true", {expires: 7});
+	//console.log(getCookie("thisCookie"));
 
-	(errCheck != 0) ? alert("please check fields and try again."): login(email, pass);
+	//(errCheck != 0) ? alert("please check fields and try again."): login(email, pass);
 }
 
 function createAccountBtn (){
