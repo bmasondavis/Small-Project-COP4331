@@ -7,7 +7,7 @@ dbQuery(document.getElementById("search").value, Cookies.get("emailID"));
 });
 
 function dbQuery(value, email) {
-let search = {searchstring: value, uemail: email};
+let search = {uemail: email, searchstring: value};
 let jsonObj = JSON.stringify(search);
 const xmlhttp = new XMLHttpRequest();
 
