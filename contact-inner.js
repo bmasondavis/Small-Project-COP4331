@@ -14,7 +14,7 @@ const xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        let responseObj = JSON.parse(xmlhttp.responseText);
-       console.log(xmlhttp.responseText);
+       console.log(responseObj.responseText);
     }
   }
   xmlhttp.open("POST", "fetchContacts.php", true);
