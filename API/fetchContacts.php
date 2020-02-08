@@ -33,8 +33,8 @@ if (mysqli_num_rows($rows) === 1)
     $contacts[] = $row;
   }
   header('Content-type: application/json');
-  json_encode($contacts);
-  echo $contacts;
+  $json_contacts = json_encode($contacts);
+  echo $json_contacts;
   }
   // Delete the requested info from the database.
 
