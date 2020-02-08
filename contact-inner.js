@@ -1,4 +1,31 @@
 // A function to open a contact already in the directory.
+document.getElementById("logout-btn").addEventListener('click', ()=> {
+window.location.href = 'index.html';
+});
+document.getElementById("search-btn").addEventListener('click', ()=> {  
+dbQuery(document.getElementById("search").value, Cookies.get("emailID"));
+});
+
+function dbQuery(value, email) {
+let search = {searchstring: value, uemail: email};
+let jsonObj = JSON.stringify(search);
+const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       console.log(xmlhttp.responseText);
+    }
+  }
+  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(jsonObj);
+}
+
+function populate(contacts) {
+  let btn = document.createElement("BUTTON");
+}
+
 function clearFields() {
   document.getElementById("name").value = "";
   document.getElementById("phone").value = "";
