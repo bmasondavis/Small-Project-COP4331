@@ -34,8 +34,7 @@ if (mysqli_num_rows($rows) === 1)
   }
   header('Content-type: application/json');
   json_encode($contacts);
-  foreach($contacts as $contact) {
-  echo $contact;
+  echo $contacts;
   }
   // Delete the requested info from the database.
 
