@@ -1,30 +1,27 @@
-<!-- TODO: add edit functionality -->
-<!-- TODO: add clear functionality on add contact tab -->
-
 <!DOCTYPE html>
 
 <html>
+
+<div class="overlay" id="overlay"></div>
+
 <head>
   <link rel="stylesheet" href="contact-inner.css">
-  
-  <title>Contact Manager</title>
 </head>
-<body>
 
+<body>
   <div class="navbar">
     <img src="ucf-logo.jpg" alt="logo"/>
     <h1>Welcome back</h1>
-    
-      <button class="logout-btn" id="logout-btn">Logout</button>
-    
+    <div>
+      <a href="index.html"><button class="logout-btn" id="logout-btn">Logout</button></a>
+    </div>
   </div>
-  <!-- <h2>Contact List<h2> -->
 
   <!-- Search and add new contacts -->
   <div class="sidebar">
     <button onclick="addContact(name, phone, email)">+</button>
-    <input type="text" id="search" onkeyup="searchFunction()" name="search"
-      placeholder="Search" title="Type in a contact">
+    <input type="text" id="search" name="search" placeholder="Search" title="Type in a contact">
+    <button class="search" onclick="searchFunction()">Search</button>
   </div>
 
   <!-- List of current contacts -->
@@ -36,27 +33,49 @@
   <!-- inner contact information -->
   <div id="tabcontent">
     <div id="contactInfo" class="tabcontent" style="display:block">
-      <h3 id="contactHeader">WELCOME KNIGHTS!</h3>
+      <div id="welcome-page">
+        <h1 id="contactHeader">Welcome!</h1>
+        <p>Let's start adding contacts</p>
+        <button id="start" onclick="addContact(name, phone, email)">Add your first contact</button>
+      </div>
     </div>
     <div class="panel-btns" id="contactBtns" style="display:none">
       <button class="action-btn" id="delete">Delete</button>
-      <button class="action-btn" id="edit">Edit</button>
+      <button class="action-btn" id="edit" onclick="editContact()">Edit</button>
     </div>
-
   </div>
+
+  <div id="editPanel" class="panel" style="display: none">
+    <h1>Edit Existing Contact</h1>
+    <div>
+      <label class="label">
+        <input type="text" id="edit-name" name="person" placeholder="Full Name" readonly/>
+      </label>
+      <label class="label">
+        <input type="tel" id="edit-phone" name="phone" placeholder="Phone Number" required/>
+      </label>
+      <label class="label">
+        <input type="email" id="edit-email" name="email" placeholder="Email Address" required/>
+      </label>
+    </div>
+    <div class="panel-btns" id="panel-btns">
+      <button class="action-btn" id="edit-clear">Clear</button>
+      <button class="action-btn" id="edit-submit" onclick="submit()">Submit</button>
+    </div>
+  </div>
+  <div id="contactButtons" class="panel" style="display: none"></div>
 
   <!-- Add new contact page -->
   <div id="contactPanel" class="panel" style="display: none">
     <h1>Add a new contact</h1>
     <div>
-      <label>
+      <label class="label">
         <input type="text" id="name" name="person" placeholder="Full Name" required/>
       </label>
-      <label>
-        <!-- TODO: add different types of phone numbers -->
+      <label class="label">
         <input type="tel" id="phone" name="phone" placeholder="Phone Number" required/>
       </label>
-      <label>
+      <label class="label">
         <input type="email" id="email" name="email" placeholder="Email Address" required/>
       </label>
     </div>
