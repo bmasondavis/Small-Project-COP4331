@@ -28,7 +28,7 @@ xmlhttp.onreadystatechange = function() {
        console.log(xmlhttp.responseText);
        if(responseObj.error === 202) alert("error code: 202");
        else if(responseObj.error === 0) {
-       	Cookies.set(email, name, {expires: 7});
+       	Cookies.set("emailID", email, {expires: 7});
        	window.location.href = 'contact-inner.html';
        } 
        else console.log("Account error");
@@ -51,13 +51,13 @@ xmlhttp.onreadystatechange = function() {
  		console.log(response);
  		
  		if(response.error == 0) {
- 			Cookies.set(response.email, "working name", {expires: 7});
+ 			Cookies.set("emailID", email, {expires: 7});
  			window.location.href = 'contact-inner.html';
  		}
     }
 };
 
-xmlhttp.open("GET", "login.php", true);
+xmlhttp.open("POST", "login.php", true);
 xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 xmlhttp.send(jsonObj);
 }
