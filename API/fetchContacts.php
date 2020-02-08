@@ -37,8 +37,6 @@ if (mysqli_num_rows($rows) === 1)
   echo $json_contacts;
   }
   // Delete the requested info from the database.
-
-}
 // If there is no user, there is a problem.
 else
 {
