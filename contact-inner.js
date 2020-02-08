@@ -16,6 +16,7 @@ xmlhttp.onreadystatechange = function() {
       console.log(xmlhttp.responseText);
        let responseObj = JSON.parse(xmlhttp.responseText);
        console.log(responseObj[0]);
+       createContact(responseObj[0].firstname, responseObj[0].phone, responseObj[0].email);
     }
   }
   xmlhttp.open("POST", "fetchContacts.php", true);
