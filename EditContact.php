@@ -8,8 +8,8 @@ include("config.php");
 $data = json_decode(file_get_contents('php://input'), true);
 
 // Get the username, email, and password from the database. 
-$fname = $data["firstname"];
-$lname = $data["lastname"];
+$fname = $data["firstName"];
+$lname = $data["lastName"];
 $phone = $data["phone"];
 $cemail = $data["cemail"];
 $uemail = $data["uemail"];
@@ -25,7 +25,7 @@ $uid = $result[0];
 // Potential error. Does update happen first, or does WHERE? If update, we need to redo. 
 
 // ^^^^ All happens at once, think of the later lines as constraints to the same call
-$sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
+$sql = "UPDATE contacts SET (firstName = '$fname', lastName = '$lname',
                             phone = '$phone', cemail = '$cemail')
                             WHERE cid = '$cid' && uid = '$uid'"; 
 
