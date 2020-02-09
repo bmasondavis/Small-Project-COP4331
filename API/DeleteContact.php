@@ -26,7 +26,10 @@ $sql = "DELETE FROM contacts WHERE cid = '$cid' && uid = '$uid'";
  // Delete the requested info from the database. 
  if ($conn->query($sql) === TRUE) 
  {
-     echo $uid;
+     
+  header('Content-type: application/json');
+  $success = '{"error":0}';
+  echo $success; 
      // Backup in case Sam wants something else. 
      //header('Content-type: application/json');
      //$success_delete = '{"error":0}';  
