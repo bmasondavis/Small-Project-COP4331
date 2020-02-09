@@ -20,21 +20,19 @@ $sql2 = "select uid from users where email = '$uemail'";
 $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
-echo $uid;
 
 $sql = "DELETE FROM contacts WHERE cid = '$cid' && uid = '$uid'"; 
 
-// Verifying that a user exists 
-if (mysqli_num_rows($rows) === 1)
-{
-    // Delete the requested info from the database. 
-    if ($conn->query($sql) === TRUE) 
-    {
-    	header('Content-type: application/json');
-    	$success_delete = '{"error":0}';  
-    	echo $success_delete; 
-    }
-}
+ // Delete the requested info from the database. 
+ if ($conn->query($sql) === TRUE) 
+ {
+     echo $uid;
+     // Backup in case Sam wants something else. 
+     //header('Content-type: application/json');
+     //$success_delete = '{"error":0}';  
+     //echo $success_delete; 
+ }
+
 // If there is no user, there is a problem. 
 else
 {
