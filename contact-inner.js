@@ -77,7 +77,7 @@ xmlhttp.onreadystatechange = function() {
      }
     }
   }
-  xmlhttp.open("POST", "editContacts.php", true);
+  xmlhttp.open("POST", "fetchContacts.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(jsonObj);
 }
@@ -93,7 +93,7 @@ xmlhttp.onreadystatechange = function() {
        else console.log("error: " + responseObj.error);
     }
   }
-  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.open("POST", "EditContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(jsonObj);
 }
@@ -108,7 +108,7 @@ xmlhttp.onreadystatechange = function() {
         updateContact(newContact);
     }
   }
-  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.open("POST", "AddContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(contactObj);
 }
@@ -126,7 +126,7 @@ xmlhttp.onreadystatechange = function() {
         eraseContact(cid);
     }
   }
-  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.open("POST", "DeleteContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(jsonObj);
 }
