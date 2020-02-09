@@ -34,7 +34,15 @@ $sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
 // Update the database with the information given. 
 if($conn->query($sql) === TRUE)
 {
-      echo $uid;
+      // Order: Everything but the uemail in the order above. Add a error:0 
+  
+      $retVal = '{"firstname":"'. $fname . '",
+                    "lastname":"' . $lname . '",
+                    "phone":"'. $phone . '",
+                    "email":"' . $cemail . '",
+                    "cid":"' . $cid . '",
+                    "error":0}';
+      echo $retVal;
       // Backup incase Sam wants something else.
       //header("Content-Type: application/json");
       //$success = '{"error":0}'; 
