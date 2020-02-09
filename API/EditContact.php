@@ -36,6 +36,7 @@ if($conn->query($sql) === TRUE)
 {
       // Order: Everything but the uemail in the order above. Add a error:0 
   
+      header('Content-type: application/json');
       $retVal = '{"firstname":"'. $fname . '",
                     "lastname":"' . $lname . '",
                     "phone":"'. $phone . '",
