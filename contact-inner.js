@@ -19,12 +19,14 @@ document.getElementById("tablinks").innerHTML = "";
 }
 
 function clearFields() {
-  document.getElementById("name").value = "";
+  document.getElementById("firstName").value = "";
+  document.getElementById("lastName").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
 }
 function editClearFields(){
-  document.getElementById("edit-name").value = "";
+  document.getElementById("edit-firstName").value = "";
+  document.getElementById("edit-lastName").value = "";
   document.getElementById("edit-phone").value = "";
   document.getElementById("edit-email").value = "";
 }
