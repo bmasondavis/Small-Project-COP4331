@@ -19,7 +19,7 @@ $sql2 = "select uid from users where email = '$uemail'";
 $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
-echo $uid;
+
 
 // Edit the contact in the server. 
 // Potential error. Does update happen first, or does WHERE? If update, we need to redo. 
@@ -29,18 +29,19 @@ $sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
                             phone = '$phone', cemail = '$cemail')
                             WHERE cid = '$cid' && uid = '$uid'"; 
 
-// If there is exactly one row, let the user edit. 
-if(mysqli_num_rows($rows) === 1)
+
+
+// Update the database with the information given. 
+if($conn->query($sql) === TRUE)
 {
-    // Update the database with the information given. 
-    if($conn->query($sql) === TRUE)
-    {
-        header("Content-Type: application/json");
-        $success = '{"error":0}'; 
-        echo $success; 
-    }
-    
+      echo $uid;
+      // Backup incase Sam wants something else.
+      //header("Content-Type: application/json");
+      //$success = '{"error":0}'; 
+      //echo $success; 
 }
+    
+
 // If there is not one row, this means they are editing something that doesn't exist. Very bad! 
 else
 {
