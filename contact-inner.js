@@ -62,6 +62,7 @@ function buttonControls() {
 
 //function to populate sidebar and load in Cache
 function populate(value, email) {
+  console.log("happens");
 let search = {uemail: email, searchstring: value};
 let jsonObj = JSON.stringify(search);
 const xmlhttp = new XMLHttpRequest();
@@ -103,12 +104,8 @@ function dbContactCreate(newContact) {
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       let responseObj = JSON.parse(xmlhttp.responseText);
-       if(responseObj.error == 0) {
-        newContact.cid = responseObj.cid;
+       newContact.cid = xmlhttp.responseText;
         updateContact(newContact);
-      }
-       else console.log("error: " + responseObj.error);
     }
   }
   xmlhttp.open("POST", "fetchContacts.php", true);
