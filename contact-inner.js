@@ -1,5 +1,5 @@
 // A function to open a contact already in the directory.
-cache = new Array();
+var cache = new Array();
 var thisCid;
 //logout button deletes cookie
 document.getElementById("logout-btn").addEventListener('click', ()=> {
@@ -16,6 +16,46 @@ populate("", Cookies.get("emailID"));
 function clearCache(){
 cache = new Array();
 document.getElementById("tablinks").innerHTML = "";
+}
+
+function clearFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
+}
+function editClearFields(){
+  document.getElementById("edit-name").value = "";
+  document.getElementById("edit-phone").value = "";
+  document.getElementById("edit-email").value = "";
+}
+//add button controls
+function buttonControls() {
+  document.getElementById("clear").addEventListener('click', ()=> clearFields());
+  document.getElementById("edit-clear").addEventListener('click', ()=> editClearFields());
+
+  document.getElementById("submit").addEventListener('click', () =>{
+      var fieldEmpty = "";
+    if(document.getElementById("firstName").value === "" || document.getElementById("lastName").value === "" || document.getElementById("phone").value === "" ||
+       document.getElementById("email").value === "")  console.log("Please fill in all fields.");
+      else{
+    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
+    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get("emailID")};
+    dbContactCreate(newContact);
+    clearFields();
+  }
+  });
+
+  document.getElementById("edit-submit").addEventListener('click', () =>{
+      var fieldEmpty = "";
+    if(document.getElementById("edit-firstName").value === "" || document.getElementById("edit-lastName").value === "" || document.getElementById("edit-phone").value === "" ||
+       document.getElementById("edit-email").value === "")  console.log("Please fill in all fields.");
+      else{
+    newContact =  {firstName: document.getElementById("edit-firstName").value, lastName: document.getElementById("edit-lastName").value,
+    phone: document.getElementById("edit-phone").value, cemail: document.getElementById("edit-email").value, uemail: Cookies.get(emailID), cid: thisCid};
+    dbContactEdit(newContact);
+    clearFields();
+  }
+  });
 }
 
 //function to populate sidebar and load in Cache
@@ -55,6 +95,26 @@ xmlhttp.onreadystatechange = function() {
   xmlhttp.send(jsonObj);
 }
 
+function dbContactEdit(newContact) {
+  let contactObj = JSON.stringify(newContact);
+  const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       if(responseObj.error == 0) {
+        newContact.cid = responseObj.cid;
+        updateContact(newContact);
+      }
+       else console.log("error: " + responseObj.error);
+    }
+  }
+  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(jsonObj);
+}
+
+
 function deleteContact(cid) {
   let contactObj = JSON.stringify({cid: cid});
   const xmlhttp = new XMLHttpRequest();
@@ -70,38 +130,6 @@ xmlhttp.onreadystatechange = function() {
   xmlhttp.open("POST", "fetchContacts.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(jsonObj);
-}
-
-function clearFields() {
-  document.getElementById("name").value = "";
-  document.getElementById("phone").value = "";
-  document.getElementById("email").value = "";
-}
-
-function buttonControls() {
-  document.getElementById("submit").addEventListener('click', () =>{
-      var fieldEmpty = "";
-    if(document.getElementById("firstName").value === "" || document.getElementById("lastName").value === "" || document.getElementById("phone") === "" ||
-       document.getElementById("email") === "")  console.log("Please fill in all fields.");
-    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
-    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get(emailID)};
-    createContact(newContact);
-    clearFields();
-  });
-
-  document.getElementById("clear").addEventListener('click', ()=> clearFields());
-
-  document.getElementById("edit-submit").addEventListener('click', () =>{
-      var fieldEmpty = "";
-    if(document.getElementById("edit-firstName").value === "" || document.getElementById("edit-lastName").value === "" || document.getElementById("edit-phone").value === "" ||
-       document.getElementById("edit-email").value === "")  console.log("Please fill in all fields.");
-      else{
-    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
-    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get(emailID), cid: thisCid};
-    dbContactEdit(newContact);
-    clearFields();
-  }
-  });
 }
 
 function findContact(cid) {
@@ -228,7 +256,7 @@ function editContact() {
     tabcontent[i].style.display = "none";
   }
 
-  y = document.getElementById("name").innerHTML;
+  y = document.getElementById("edit-firstName").innerHTML;
   document.getElementById("edit-firstName").placeholder = y;
 
   if (x.style.display === "none") {
