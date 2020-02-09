@@ -37,17 +37,17 @@ if($conn->query($sql) === TRUE)
       // Order: Everything but the uemail in the order above. Add a error:0 
   
       header('Content-type: application/json');
-      $retVal = '{"firstname":"'. $fname . '",
-                    "lastname":"' . $lname . '",
-                    "phone":"'. $phone . '",
-                    "email":"' . $cemail . '",
-                    "cid":"' . $cid . '",
-                    "error":0}';
-      echo $retVal;
+     // $retVal = '{"firstname":"'. $fname . '",
+     //               "lastname":"' . $lname . '",
+       //             "phone":"'. $phone . '",
+         //           "email":"' . $cemail . '",
+           //         "cid":"' . $cid . '",
+             //       "error":0}';
+     // echo $retVal;
       // Backup incase Sam wants something else.
       //header("Content-Type: application/json");
-      //$success = '{"error":0}'; 
-      //echo $success; 
+      $success = '{"error":0}'; 
+      echo $success; 
 }
     
 
