@@ -28,11 +28,15 @@ echo $uid;
 $sql = "INSERT INTO contacts (firstname, lastname, phone, email, uid) VALUES ('$fname','$lname','$phone', '$cemail', $uid)"; 
 if ($conn->query($sql) === TRUE)
 {
-    echo "contact successfully created";   
+    header('Content-type: application/json');
+    $success = '{"error":0}';
+    echo $success; 
 }
 else
 {
-    echo "contact creation failed";
+    header('Content-type: application/json');
+    $failure = '{"error":555}';
+    echo $failure;
 }
 
 // If there is no existing contact, add it. 
