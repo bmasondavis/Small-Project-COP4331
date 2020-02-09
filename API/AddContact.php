@@ -22,15 +22,15 @@ $sql2 = "select uid from users where email = '$uemail'";
 $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
-echo $uid;
-
 
 $sql = "INSERT INTO contacts (firstname, lastname, phone, email, uid) VALUES ('$fname','$lname','$phone', '$cemail', $uid)"; 
 if ($conn->query($sql) === TRUE)
 {
-    header('Content-type: application/json');
-    $success = '{"error":0}';
-    echo $success; 
+    echo $uid;
+   // Backup in case Sam Wants a different parameter back
+   // header('Content-type: application/json');
+   // $success = '{"error":0}';
+   // echo $success; 
 }
 else
 {
