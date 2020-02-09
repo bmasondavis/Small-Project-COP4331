@@ -1,6 +1,9 @@
 // A function to open a contact already in the directory.
 cache = new Array();
+thisCid;
+//logout button deletes cookie
 document.getElementById("logout-btn").addEventListener('click', ()=> {
+Cookies.remove("emailID");
 window.location.href = 'index.html';
 });
 document.getElementById("search-btn").addEventListener('click', ()=> {  
@@ -9,11 +12,13 @@ populate(document.getElementById("search").value, Cookies.get("emailID"));
 
 populate("", Cookies.get("emailID"));
 
+//delete cache and reset sidebar
 function clearCache(){
 cache = new Array();
 document.getElementById("tablinks").innerHTML = "";
 }
 
+//function to populate sidebar and load in Cache
 function populate(value, email) {
 let search = {uemail: email, searchstring: value};
 let jsonObj = JSON.stringify(search);
@@ -22,13 +27,44 @@ clearCache();
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      console.log(xmlhttp.responseText);
        let responseObj = JSON.parse(xmlhttp.responseText);
-       console.log(responseObj[0]);
-       for(let i = 0; i < responseObj.length; i++){
+       for(let i = 0; i < responseObj.length; i++) {
         cache.push(responseObj[i]);
-       createContact(responseObj[i].firstname, responseObj[i].phone, responseObj[i].email);
+       createContact(responseObj[i]);
      }
+    }
+  }
+  xmlhttp.open("POST", "editContacts.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(jsonObj);
+}
+
+function dbContactEdit(newContact) {
+  let contactObj = JSON.stringify(newContact);
+  const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       if(responseObj.error == 0) updateContact(newContact);
+       else console.log("error: " + responseObj.error);
+    }
+  }
+  xmlhttp.open("POST", "fetchContacts.php", true);
+  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xmlhttp.send(jsonObj);
+}
+
+function deleteContact(cid) {
+  let contactObj = JSON.stringify({cid: cid});
+  const xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       if(responseObj.error === 0)
+        console.log("delete success");
+        eraseContact(cid);
     }
   }
   xmlhttp.open("POST", "fetchContacts.php", true);
@@ -45,10 +81,11 @@ function clearFields() {
 function buttonControls() {
   document.getElementById("submit").addEventListener('click', () =>{
       var fieldEmpty = "";
-    if(document.getElementById("name").value === "" && document.getElementById("phone") === "" &&
-       document.getElementById("email") === "")  fieldEmpty += "Please fill in all fields.";
-    (fieldEmpty === "") ? createContact(document.getElementById("name").value, document.getElementById("phone").value,
-     document.getElementById("email").value) : alert(fieldEmpty);
+    if(document.getElementById("firstName").value === "" || document.getElementById("lastName").value === "" || document.getElementById("phone") === "" ||
+       document.getElementById("email") === "")  console.log("Please fill in all fields.");
+    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
+    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get(emailID)};
+    createContact(newContact);
     clearFields();
   });
 
@@ -56,30 +93,30 @@ function buttonControls() {
 
   document.getElementById("edit-submit").addEventListener('click', () =>{
       var fieldEmpty = "";
-    if(document.getElementById("phone") === "" && document.getElementById("email") === "")
-      fieldEmpty += "Please fill in all fields.";
-    (fieldEmpty === "") ? createContact(document.getElementById("name").value, document.getElementById("phone").value,
-     document.getElementById("email").value) : alert(fieldEmpty);
+    if(document.getElementById("edit-firstName").value === "" || document.getElementById("edit-lastName").value === "" || document.getElementById("edit-phone").value === "" ||
+       document.getElementById("edit-email").value === "")  console.log("Please fill in all fields.");
+      else{
+    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
+    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get(emailID), cid: thisCid};
+    dbContactEdit(newContact);
     clearFields();
+  }
   });
 }
 
-function submit() {
-  var fieldEmpty = "";
-
-  if (document.getElementById("edit-phone") === "" || document.getElementById("edit-email") === "")
-    fieldEmpty += "Please fill in all fields.";
-
-  (fieldEmpty === "") ? createContact(contactName, document.getElementById("edit-phone").value,
-  document.getElementById("edit-email").value) : alert(fieldEmpty);
-  clearFields();
+function findContact(cid) {
+  for(int i = 0; i < cache.length; i++)
+    if(cache[i].cid = cid) return cache[i];
 }
 
-function openContact(contactName) {
+function openContact(contactName, cid) {
   var i, x, y, z, m, tabcontent, tablinks;
   // Display edit and delete buttons.
   document.getElementById('delete').style.display = "block";
   document.getElementById('edit').style.display = "block";
+  thisCid = cid;
+  contactInfo = findContact(cid);
+  console.log(contactInfo);
 
   /*
   y = document.getElementById('welcome-page');
@@ -132,13 +169,15 @@ function addContact() {
 	}
 }
 
-function createContact(contactName, phone, email) {
+//function to create contact on sidebar
+function createContact(contact) {
   let newA = document.createElement("a");
   let newLi = document.createElement("li");
-  newA.innerHTML = contactName;
+  newA.innerHTML = contact.firstName;
   newA.setAttribute('href', '#');
+  newA.id = contact.cid;
   newLi.appendChild(newA);
-  newLi.addEventListener('click', ()=> openContact(contactName));
+  newLi.addEventListener('click', ()=> openContact(contact, newA.id));
   document.getElementById("tablinks").appendChild(newLi);
 }
 
@@ -160,6 +199,22 @@ function searchFunction() {
   }
 }
 
+//delete from cache and sidebar
+function eraseContact(oldCid) {
+  let index = cache.findIndex(findContact(oldCid));
+  cache.splice(index, 1);
+  let li = document.getElementById(oldCid).parentElement.nodeName;
+  li.remove();
+}
+
+//update sidebar and cache
+function updateContact(newContact){
+let contact = document.getElementById(newContact.cid);
+contact.innerHTML = newContact.firstName;
+findContact(newContact) = newContact;
+}
+
+//show editContact page
 function editContact() {
   var x = document.getElementById("editPanel"), y;
 
@@ -174,7 +229,7 @@ function editContact() {
   }
 
   y = document.getElementById("name").innerHTML;
-  document.getElementById("edit-name").placeholder = y;
+  document.getElementById("edit-firstName").placeholder = y;
 
   if (x.style.display === "none") {
     x.style.display = "block";
