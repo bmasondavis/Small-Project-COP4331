@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("ucf4.jpg");
+  font-family: Montserrat, sans-serif;
+}
+
+#overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: -1;
+}
+
+#welcome-page {
+  text-align: center;
+  margin: 50px;
+  margin-top: 10em;
+  z-index: 1;
+}
+
+#welcome-page button {
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Styling for the header */
+.navbar {
+  position: relative;
+  background-color: #000000;
+  font-family: Montserrat, sans-serif;
+  color: #FFFFFF;
+  font-size: 15px;
+}
+
+/* UCF logo */
+.navbar img {
+  float: left;
+  width: 57px;
+  height: 35px;
+}
+
+/* Styling for the logout button */
+.logout-btn {
+  float: right;
+}
+
+.navbar .logout-btn {
+  float: right;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffc100;
+  background-color: black;
+  border: transparent;
+  width: 100px;
+  border-left: 1px solid #ffc100;
+  margin-top: -28px;
+}
+
+.navbar .logout-btn:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+/* Style the tab */
+.tab {
+  float: left;
+  background-color: #ffc100;
+  width: 300px;
+  height: 600px;
+}
+
+#tablinks {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#tablinks li a {
+  padding: 12px;
+  text-decoration: none;
+  color: black;
+  display: block;
+  position: relative;
+  border-bottom: 1px solid #000;
+  transition: 0.3s;
+  font-size: 17px;
+  font-family: Quicksand;
+}
+
+#tablinks li a:hover {
+  background-color: #eee;
+}
+
+/* Style the tab content */
+.tabcontent {
+  position: static;
+  background: #FEFEFD;
+  border: 1px solid #ccc;
+  height: 600px;
+  z-index: 1;
+}
+
+.tabcontent h3 {
+  position: relative;
+  font-size: 30px;
+  top: 25px;
+  left: 31%;
+}
+
+#edit {
+  padding: 10px 24px;
+  background-color: #070707;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 50%;
+  margin-top: -44px;
+}
+
+#delete {
+  padding: 10px 24px;
+  background-color: #070707;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.6;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 60%;
+  margin-top: -80px;
+}
+
+/* Change background color of add button on hover */
+.sidebar button:hover {
+  background-color: #070707;
+  color: #FFC100;
+}
+
+.sidebar button.active {
+  background-color: #ccc;
+}
+
+/* Style the add button */
+.sidebar button {
+  background-color: #ffc100;
+  margin-top: -20px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style the add contact page */
+.panel {
+  background: #FEFEFD;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-left: none;
+  height: 600px;
+  font-size: 15px;
+}
+
+.panel h1 {
+  position: relative;
+  font-size: 30px;
+  top: 15px;
+  left: 30%;
+}
+
+/* Style the add contact page text fields */
+.panel input {
+  font-size: 18px;
+  color: $black;
+  background: transparent;
+  transition: border-color 0.2s;
+  border: 0;
+  border-bottom: 2px solid gray;
+  position: absolute;
+  outline: 0;
+  display: flex;
+  padding: 12px 15px;
+  margin-bottom: 50px;
+  position: relative;
+  top: 35px;
+  left: 20%;
+  width: 40%
+}
+
+/* Styling 'submit' and 'clear' buttons */
+.panel .panel-btns {
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 50%;
+  display: flex;
+}
+
+/* Style the add contact page text fields */
+#edit-name {
+  background-color: #ccc;
+  font-size: 18px;
+  border: none;
+  display: flex;
+  padding: 12px 15px;
+  margin-bottom: 50px;
+  position: relative;
+  top: 35px;
+  left: 20%;
+  width: 40%
+}
+
+.action-btn {
+  opacity: 0.8;
+  padding: 10px 24px;
+  border-radius: 10%;
+  background-color: #070707;
+  color: #FFC100;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  background-color: #FFC100;
+  color: #070707;
+}
+
+/* Style the contact picture */
+.container {
+  position: fixed;
+  width: 100%;
+}
+
+/* Style the search bar */
+#search {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-repeat: no-repeat;
+  background-position: 1% 45%;
+  padding: 12px 1px 12px 20px;
+  background-size: 15px 15px;
+  height: 20px;
+  width: 266px;
+}
