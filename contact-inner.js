@@ -1,6 +1,6 @@
 // A function to open a contact already in the directory.
 cache = new Array();
-thisCid;
+var thisCid;
 //logout button deletes cookie
 document.getElementById("logout-btn").addEventListener('click', ()=> {
 Cookies.remove("emailID");
@@ -105,7 +105,7 @@ function buttonControls() {
 }
 
 function findContact(cid) {
-  for(int i = 0; i < cache.length; i++)
+  for(let i = 0; i < cache.length; i++)
     if(cache[i].cid = cid) return cache[i];
 }
 
