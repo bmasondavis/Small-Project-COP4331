@@ -72,6 +72,7 @@ xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        let responseObj = JSON.parse(xmlhttp.responseText);
        for(let i = 0; i < responseObj.length; i++) {
+        console.log(responseObj[i]);
         cache.push(responseObj[i]);
        createContact(responseObj[i]);
      }
