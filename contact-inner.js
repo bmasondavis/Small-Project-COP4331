@@ -97,7 +97,7 @@ xmlhttp.onreadystatechange = function() {
   xmlhttp.send(jsonObj);
 }
 
-function dbContactEdit(newContact) {
+function dbContactCreate(newContact) {
   let contactObj = JSON.stringify(newContact);
   const xmlhttp = new XMLHttpRequest();
 
@@ -113,7 +113,7 @@ xmlhttp.onreadystatechange = function() {
   }
   xmlhttp.open("POST", "fetchContacts.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(jsonObj);
+  xmlhttp.send(contactObj);
 }
 
 
