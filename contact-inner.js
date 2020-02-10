@@ -182,7 +182,6 @@ function addContact() {
 
 //function to create contact on sidebar
 function createContact(contact) {
-  console.log(contact);
   let newA = document.createElement("a");
   let newLi = document.createElement("li");
   newA.innerHTML = contact.firstName;
@@ -233,8 +232,6 @@ function editContact() {
   let contact = findContact(thisCid);
   document.getElementById('contactPanel').style.display = "block";
   // Hide edit and delete buttons.
-  document.getElementById('delete').style.display = "none";
-  document.getElementById('edit').style.display = "none";
 
   document.getElementById("firstName").value = contact.firstName;
   document.getElementById("lastName").value = contact.lastName;
@@ -243,11 +240,11 @@ function editContact() {
 
   document.getElementById("firstName").readOnly = true;
   document.getElementById("lastName").readOnly = true;
-  document.getElementById("firstName").readOnly = false;
-  document.getElementById("lastName").readOnly = false;
+  document.getElementById("phone").readOnly = false;
+  document.getElementById("email").readOnly = false;
 
   document.getElementById("contactPanel").style.display = "block";
   document.getElementById("addContact-btns").style.display = "none";
-  document.getElementById("panel-btns").style.display = "blocks";
+  document.getElementById("panel-btns").style.display = "block";
   document.getElementById("contact-btns").style.display = "none";
 }
