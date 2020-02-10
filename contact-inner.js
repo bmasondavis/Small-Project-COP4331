@@ -140,7 +140,7 @@ function openContact(contact) {
   // Display edit and delete buttons.
   buttonControls();
 	// Hide the "add new contact" page
-
+  thisCid = contact.cid;
 	document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = contact.firstname;
   document.getElementById("lastname").value = contact.lastname;
