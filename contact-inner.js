@@ -153,10 +153,9 @@ function openContact(cid) {
   document.getElementById("phone").readOnly = true;
   document.getElementById("email").readOnly = true;
   //set button visibility
-  document.getElementById("contactPanel").style.display = "block";
   document.getElementById("addContact-btns").style.display = "none";
   document.getElementById("panel-btns").style.display = "none";
-  document.getElementById("contact-btns").style.display = "block";
+  document.getElementById("edit-btns").style.display = "block";
 }
 
 // A function to add a contact to the directory.
@@ -174,10 +173,9 @@ function addContact() {
   document.getElementById("phone").readOnly = false;
   document.getElementById("email").readOnly = false;
   //set button visibility
-  document.getElementById("contactPanel").style.display = "block";
   document.getElementById("addContact-btns").style.display = "block";
   document.getElementById("panel-btns").style.display = "none";
-  document.getElementById("contact-btns").style.display = "none";
+  document.getElementById("edit-btns").style.display = "none";
 }
 
 //function to create contact on sidebar
@@ -243,8 +241,7 @@ function editContact() {
   document.getElementById("phone").readOnly = false;
   document.getElementById("email").readOnly = false;
 
-  document.getElementById("contactPanel").style.display = "block";
   document.getElementById("addContact-btns").style.display = "none";
   document.getElementById("panel-btns").style.display = "block";
-  document.getElementById("contact-btns").style.display = "none";
+  document.getElementById("edit-btns").style.display = "none";
 }
