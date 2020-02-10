@@ -136,17 +136,11 @@ function findContact(cid) {
     if(cache[i].cid = cid) return cache[i];
 }
 
-function openContact(cid) {
+function openContact(contact) {
   // Display edit and delete buttons.
-  thisCid = cid;
-  contact = findContact(cid);
   buttonControls();
 	// Hide the "add new contact" page
-  document.getElementById("firstname").readOnly = false;
-  document.getElementById("lastname").readOnly = false;
-  document.getElementById("phone").readOnly = false;
-  document.getElementById("email").readOnly = false;
-  
+
 	document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = contact.firstname;
   document.getElementById("lastname").value = contact.lastname;
@@ -166,10 +160,6 @@ function openContact(cid) {
 // A function to add a contact to the directory.
 function addContact() {
   buttonControls();
-  document.getElementById("firstname").readOnly = false;
-  document.getElementById("lastname").readOnly = false;
-  document.getElementById("phone").readOnly = false;
-  document.getElementById("email").readOnly = false;
 
   document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = "";
