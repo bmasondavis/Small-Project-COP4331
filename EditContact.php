@@ -26,7 +26,7 @@ $uid = $result[0];
 
 // ^^^^ All happens at once, think of the later lines as constraints to the same call
 $sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
-                            phone = '$phone', cemail = '$cemail')
+                            phone = '$phone', email = '$cemail')
                             WHERE cid = '$cid'";  
                             //&& uid = '$uid'"; 
 
