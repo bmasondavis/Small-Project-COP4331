@@ -140,6 +140,7 @@ function openContact(contact) {
   // Display edit and delete buttons.
   buttonControls();
 	// Hide the "add new contact" page
+  document.getElementById('panelHeader').innerText = "Contact Info";
   thisCid = contact.cid;
 	document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = contact.firstname;
@@ -153,14 +154,14 @@ function openContact(contact) {
   document.getElementById("email").readOnly = true;
   //set button visibility
   document.getElementById("addContact-btns").style.display = "none";
-  document.getElementById("panel-btns").style.display = "none";
-  document.getElementById("edit-btns").style.display = "block";
+  document.getElementById("panel-btns").style.display = "block";
+  document.getElementById("edit-btns").style.display = "none";
 }
 
 // A function to add a contact to the directory.
 function addContact() {
   buttonControls();
-
+  document.getElementById('panelHeader').innerText = "Create Contact";
   document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = "";
   document.getElementById("lastname").value = "";
@@ -229,6 +230,7 @@ function editContact() {
   let contact = findContact(thisCid);
   document.getElementById('contactPanel').style.display = "block";
   // Hide edit and delete buttons.
+  document.getElementById('panelHeader').innerText = "Edit Contact";
   document.getElementById("firstname").readOnly = false;
   document.getElementById("lastname").readOnly = false;
   document.getElementById("phone").readOnly = false;
@@ -245,6 +247,6 @@ function editContact() {
   document.getElementById("email").readOnly = false;
 
   document.getElementById("addContact-btns").style.display = "none";
-  document.getElementById("panel-btns").style.display = "block";
-  document.getElementById("edit-btns").style.display = "none";
+  document.getElementById("panel-btns").style.display = "none";
+  document.getElementById("edit-btns").style.display = "block";
 }
