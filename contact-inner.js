@@ -133,7 +133,7 @@ xmlhttp.onreadystatechange = function() {
 
 function findContact(cid) {
   for(let i = 0; i < cache.length; i++)
-    if(cache[i].cid = cid) return cache[i];
+    if(cache[i].cid == cid) return cache[i];
 }
 
 function openContact(contact) {
