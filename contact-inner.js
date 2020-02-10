@@ -26,8 +26,6 @@ function clearFields() {
   document.getElementById("email").value = "";
 }
 function editClearFields(){
-  document.getElementById("edit-firstName").value = "";
-  document.getElementById("edit-lastName").value = "";
   document.getElementById("edit-phone").value = "";
   document.getElementById("edit-email").value = "";
 }
@@ -61,8 +59,12 @@ function buttonControls() {
   });
 }
 
+function populate(value, email){
+  clearCache();
+  populateBar(value, email);
+}
 //function to populate sidebar and load in Cache
-function populate(value, email) {
+function populateBar(value, email) {
 let search = {uemail: email, searchstring: value};
 let jsonObj = JSON.stringify(search);
 const xmlhttp = new XMLHttpRequest();
@@ -70,7 +72,7 @@ const xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        let responseObj = JSON.parse(xmlhttp.responseText);
-       clearCache();
+       
        for(let i = 0; i < responseObj.length; i++) {
         cache.push(responseObj[i]);
        createContact(responseObj[i]);
@@ -144,8 +146,6 @@ function openContact(newContact, cid) {
   document.getElementById('edit').style.display = "block";
   thisCid = cid;
   contactInfo = findContact(cid);
-  console.log(contactInfo);
-
   /*
   y = document.getElementById('welcome-page');
   y.style.display = "none";
@@ -161,7 +161,6 @@ function openContact(newContact, cid) {
 	x = document.getElementById('contactPanel');
 	x.style.display = 'none';
   let contact = document.getElementById("contactInfo");
-  console.log(newContact);
   document.getElementById("contactHeader").innerHTML = newContact.firstName + " " + newContact.lastName;
 	contact.style.display = "block";
   document.getElementById("contactBtns").style.display = "block";
@@ -238,7 +237,7 @@ function eraseContact(oldCid) {
 
 //update sidebar and cache
 function updateContact(newContact, cid){
-  createContact(newContact);
+createContact(newContact);
 let contact = document.getElementById(newContact.cid);
 contact.innerHTML = newContact.firstName;
 findContact(newContact) = newContact;
