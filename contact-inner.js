@@ -26,13 +26,14 @@ function clearFields() {
   document.getElementById("email").value = "";
 }
 function editClearFields(){
-  document.getElementById("edit-phone").value = "";
-  document.getElementById("edit-email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("email").value = "";
 }
 //add button controls
 function buttonControls() {
   document.getElementById("clear").addEventListener('click', ()=> clearFields());
   document.getElementById("edit-clear").addEventListener('click', ()=> editClearFields());
+  document.getElementById("edit").addEventListener('click', ()=> editContact());
 
   document.getElementById("submit").addEventListener('click', () =>{
       var fieldEmpty = "";
@@ -160,7 +161,6 @@ function openContact(cid) {
 
 // A function to add a contact to the directory.
 function addContact() {
-	var tabcontent, x = document.getElementById("contactPanel"), y, z, m;
   buttonControls();
   
   document.getElementById('contactPanel').style.display = "block";
@@ -231,12 +231,10 @@ findContact(newContact) = newContact;
 function editContact() {
   
   let contact = findContact(thisCid);
+  document.getElementById('contactPanel').style.display = "block";
   // Hide edit and delete buttons.
   document.getElementById('delete').style.display = "none";
   document.getElementById('edit').style.display = "none";
-  tabcontent = document.getElementsByClassName("tabcontent");
-
-  for (i = 0; i < tabcontent.length; i++) tabcontent[i].style.display = "none";
 
   document.getElementById("firstName").value = contact.firstName;
   document.getElementById("lastName").value = contact.lastName;
