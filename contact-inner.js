@@ -72,7 +72,6 @@ xmlhttp.onreadystatechange = function() {
        let responseObj = JSON.parse(xmlhttp.responseText);
        clearCache();
        for(let i = 0; i < responseObj.length; i++) {
-        
         cache.push(responseObj[i]);
        createContact(responseObj[i]);
      }
@@ -248,7 +247,7 @@ findContact(newContact) = newContact;
 //show editContact page
 function editContact() {
   var x = document.getElementById("editPanel"), y;
-
+  let contact = findContact(thiCid);
   buttonControls();
   // Hide edit and delete buttons.
   document.getElementById('delete').style.display = "none";
@@ -259,8 +258,10 @@ function editContact() {
     tabcontent[i].style.display = "none";
   }
 
-  y = document.getElementById("edit-firstName").innerHTML;
-  document.getElementById("edit-firstName").placeholder = y;
+  document.getElementById("edit-firstName").innerHTML = contact.firstName;
+  document.getElementById("edit-lastName").innerHTML = contact.lastName;
+  document.getElementById("edit-phone").innerHTML = contact.phone;
+  document.getElementById("edit-email").innerHTML = contact.email;
 
   if (x.style.display === "none") {
     x.style.display = "block";
