@@ -53,7 +53,7 @@ function buttonControls() {
        document.getElementById("edit-email").value === "")  console.log("Please fill in all fields.");
       else{
     newContact =  {firstName: document.getElementById("edit-firstName").value, lastName: document.getElementById("edit-lastName").value,
-    phone: document.getElementById("edit-phone").value, cemail: document.getElementById("edit-email").value, uemail: Cookies.get(emailID), cid: thisCid};
+    phone: document.getElementById("edit-phone").value, cemail: document.getElementById("edit-email").value, uemail: Cookies.get("emailID"), cid: thisCid};
     dbContactEdit(newContact);
     clearFields();
   }
@@ -138,7 +138,7 @@ function findContact(cid) {
     if(cache[i].cid = cid) return cache[i];
 }
 
-function openContact(contactName, cid) {
+function openContact(contact, cid) {
   var i, x, y, z, m, tabcontent, tablinks;
   // Display edit and delete buttons.
   document.getElementById('delete').style.display = "block";
@@ -163,7 +163,7 @@ function openContact(contactName, cid) {
 	x.style.display = 'none';
   let contact = document.getElementById("contactInfo");
   console.log(contactName);
-  document.getElementById("contactHeader").innerHTML = contactName;
+  document.getElementById("contactHeader").innerHTML = contact.firstName + " " + contact.lastName;
 	contact.style.display = "block";
   document.getElementById("contactBtns").style.display = "block";
 }
