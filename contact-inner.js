@@ -106,7 +106,8 @@ function dbContactCreate(newContact) {
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        newContact.cid = xmlhttp.responseText;
-        updateContact(newContact);
+       cache.push(newContact);
+       createContact(newContact);
     }
   }
   xmlhttp.open("POST", "AddContact.php", true);
@@ -237,7 +238,7 @@ function eraseContact(oldCid) {
 }
 
 //update sidebar and cache
-function updateContact(newContact){
+function updateContact(newContact, cid){
   createContact(newContact);
 let contact = document.getElementById(newContact.cid);
 contact.innerHTML = newContact.firstName;
