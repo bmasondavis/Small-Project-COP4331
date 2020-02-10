@@ -161,7 +161,7 @@ function openContact(newContact, cid) {
 	x = document.getElementById('contactPanel');
 	x.style.display = 'none';
   let contact = document.getElementById("contactInfo");
-  console.log(contactName);
+  console.log(newContact);
   document.getElementById("contactHeader").innerHTML = newContact.firstName + " " + newContact.lastName;
 	contact.style.display = "block";
   document.getElementById("contactBtns").style.display = "block";
