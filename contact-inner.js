@@ -15,7 +15,8 @@ populate("", Cookies.get("emailID"));
 //delete cache and reset sidebar
 function clearCache(){
 cache = new Array();
-document.getElementById("tablinks").innerHTML = "";
+let tabLinks = document.getElementById("tablinks");
+while (tabLinks.firstChild) tabLinks.removeChild(tabLinks.firstChild);
 }
 
 function clearFields() {

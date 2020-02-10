@@ -19,7 +19,7 @@
 
   <!-- Search and add new contacts -->
   <div class="sidebar">
-    <button onclick="addContact(name, phone, email)">+</button>
+    <button onclick="addContact()">+</button>
     <input type="text" id="search" name="search" placeholder="Search" title="Type in a contact">
     <button class="search" id="search-btn" onclick="searchFunction()">Search</button>
   </div>
@@ -36,7 +36,7 @@
       <div id="welcome-page">
         <h1 id="contactHeader">Welcome!</h1>
         <p>Let's start adding contacts</p>
-        <button id="start" onclick="addContact(name, phone, email)">Add your first contact</button>
+        <button id="start" onclick="addContact()">Add your first contact</button>
       </div>
     </div>
     <div class="panel-btns" id="contactBtns" style="display:none">
