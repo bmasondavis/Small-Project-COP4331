@@ -30,44 +30,6 @@
     </ul>
   </div>
 
-  <!-- inner contact information -->
-  <div id="tabcontent">
-    <div id="contactInfo" class="tabcontent" style="display:block">
-      <div id="welcome-page">
-        <h1 id="contactHeader">Welcome!</h1>
-        <p>Let's start adding contacts</p>
-        <button id="start" onclick="addContact()">Add your first contact</button>
-      </div>
-    </div>
-    <div class="panel-btns" id="contactBtns" style="display:none">
-      <button class="action-btn" id="delete">Delete</button>
-      <button class="action-btn" id="edit" onclick="editContact()">Edit</button>
-    </div>
-  </div>
-
-  <div id="editPanel" class="panel" style="display: none">
-    <h1>Edit Existing Contact</h1>
-    <div>
-      <label class="label">
-        <input type="text" id="edit-firstName" name="person" placeholder="First Name" readonly/>
-      </label>
-      <label class="label">
-        <input type="text" id="edit-lastName" name="person" placeholder="Last Name" readonly/>
-      </label>
-      <label class="label">
-        <input type="tel" id="edit-phone" name="phone" placeholder="Phone Number" required/>
-      </label>
-      <label class="label">
-        <input type="email" id="edit-email" name="email" placeholder="Email Address" required/>
-      </label>
-    </div>
-    <div class="panel-btns" id="panel-btns">
-      <button class="action-btn" id="edit-clear">Clear</button>
-      <button class="action-btn" id="edit-submit">Submit</button>
-    </div>
-  </div>
-  <div id="contactButtons" class="panel" style="display: none"></div>
-
   <!-- Add new contact page -->
   <div id="contactPanel" class="panel" style="display: none">
     <h1>Add a new contact</h1>
@@ -85,10 +47,22 @@
         <input type="email" id="email" name="email" placeholder="Email Address" required/>
       </label>
     </div>
-    <div class="panel-btns">
+
+    <div class="panel-btns" id="addContact-btns" style="display:none">
       <button class="action-btn" id="clear">Clear</button>
       <button class="action-btn" id="submit">Submit</button>
     </div>
+
+    <div class="panel-btns" id="panel-btns" style="display:none">
+      <button class="action-btn" id="edit-clear">Clear</button>
+      <button class="action-btn" id="edit-submit">Submit</button>
+    </div>
+
+    <div class="panel-btns" id="contact-btns" style="display:none">
+      <button class="action-btn" id="delete">Delete</button>
+      <button class="action-btn" id="edit">Edit</button>
+    </div>
+
   </div>
   <div id="contactButtons" class="panel" style="display: none">
   </div>
