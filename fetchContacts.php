@@ -21,7 +21,7 @@ $uid = $result[0];
 
 
 // this aint gonna be pretty :^S
-$sql = "select firstName, lastName, phone, email, cid from contacts WHERE (lastName REGEXP '$searchstring^' || firstName REGEXP '$searchstring^') && uid = $uid";
+$sql = "select firstname, lastname, phone, email, cid from contacts WHERE (lastname REGEXP '$searchstring^' || firstname REGEXP '$searchstring^') && uid = $uid";
 
 $contacts = array();
 // Verifying that a user exists
