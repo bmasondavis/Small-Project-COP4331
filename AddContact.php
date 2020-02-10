@@ -23,8 +23,8 @@ $rows = $conn->query($sql2);
 $result = mysqli_fetch_row($rows);
 $uid = $result[0];
 
-$sql = "INSERT INTO contacts (firstName, lastName, phone, email, uid) VALUES ('$fname','$lname','$phone', '$cemail', $uid)";
-$sql3 = "select cid from contacts where firstName = '$fname'&& lastName = '$lname' && phone = '$phone' && email = '$cemail' && uid = '$uid'";
+$sql = "INSERT INTO contacts (firstname, lastname, phone, email, uid) VALUES ('$fname','$lname','$phone', '$cemail', $uid)";
+$sql3 = "select cid from contacts where firstname = '$fname'&& lastname = '$lname' && phone = '$phone' && email = '$cemail' && uid = '$uid'";
 if ($conn->query($sql) === TRUE)
 {
     $temp = $conn->query($sql3);
