@@ -139,8 +139,6 @@ function openContact(cid) {
   // Display edit and delete buttons.
   thisCid = cid;
   contact = findContact(cid);
-  
-  document.getElementById('overlay').stlye.display = "none";
   buttonControls();
 	// Hide the "add new contact" page
 	document.getElementById('contactPanel').style.display = "block";
