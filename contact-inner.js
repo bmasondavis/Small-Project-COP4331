@@ -62,17 +62,16 @@ function buttonControls() {
 
 //function to populate sidebar and load in Cache
 function populate(value, email) {
-  console.log("happens");
 let search = {uemail: email, searchstring: value};
 let jsonObj = JSON.stringify(search);
 const xmlhttp = new XMLHttpRequest();
-clearCache();
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        let responseObj = JSON.parse(xmlhttp.responseText);
+       clearCache();
        for(let i = 0; i < responseObj.length; i++) {
-        console.log(responseObj[i]);
+        
         cache.push(responseObj[i]);
        createContact(responseObj[i]);
      }
