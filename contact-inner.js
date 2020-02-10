@@ -247,7 +247,7 @@ findContact(newContact) = newContact;
 //show editContact page
 function editContact() {
   var x = document.getElementById("editPanel"), y;
-  let contact = findContact(thiCid);
+  let contact = findContact(thisCid);
   buttonControls();
   // Hide edit and delete buttons.
   document.getElementById('delete').style.display = "none";
