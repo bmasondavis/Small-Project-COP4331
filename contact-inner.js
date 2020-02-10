@@ -259,10 +259,10 @@ function editContact() {
     tabcontent[i].style.display = "none";
   }
 
-  document.getElementById("edit-firstName").innerHTML = contact.firstName;
-  document.getElementById("edit-lastName").innerHTML = contact.lastName;
-  document.getElementById("edit-phone").innerHTML = contact.phone;
-  document.getElementById("edit-email").innerHTML = contact.email;
+  document.getElementById("edit-firstName").value = contact.firstName;
+  document.getElementById("edit-lastName").value = contact.lastName;
+  document.getElementById("edit-phone").value = contact.phone;
+  document.getElementById("edit-email").value = contact.email;
 
   if (x.style.display === "none") {
     x.style.display = "block";
