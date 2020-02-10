@@ -6,7 +6,7 @@ document.getElementById("logout-btn").addEventListener('click', ()=> {
 Cookies.remove("emailID");
 window.location.href = 'index.html';
 });
-document.getElementById("search-btn").addEventListener('click', ()=> {  
+document.getElementById("search-btn").addEventListener('click', ()=> {
 populate(document.getElementById("search").value, Cookies.get("emailID"));
 });
 
@@ -20,8 +20,8 @@ while (tabLinks.firstChild) tabLinks.removeChild(tabLinks.firstChild);
 }
 
 function clearFields() {
-  document.getElementById("firstName").value = "";
-  document.getElementById("lastName").value = "";
+  document.getElementById("firstname").value = "";
+  document.getElementById("lastname").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
 }
@@ -37,10 +37,10 @@ function buttonControls() {
 
   document.getElementById("submit").addEventListener('click', () =>{
       var fieldEmpty = "";
-    if(document.getElementById("firstName").value === "" || document.getElementById("lastName").value === "" || document.getElementById("phone").value === "" ||
+    if(document.getElementById("firstname").value === "" || document.getElementById("lastname").value === "" || document.getElementById("phone").value === "" ||
        document.getElementById("email").value === "")  console.log("Please fill in all fields.");
       else{
-    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
+    newContact =  {firstname: document.getElementById("firstname").value, lastname: document.getElementById("lastname").value,
     phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get("emailID")};
     dbContactCreate(newContact);
     clearFields();
@@ -49,11 +49,11 @@ function buttonControls() {
 
   document.getElementById("edit-submit").addEventListener('click', () =>{
       var fieldEmpty = "";
-    if(document.getElementById("firstName").value === "" || document.getElementById("lastName").value === "" || document.getElementById("phone").value === "" ||
+    if(document.getElementById("firstname").value === "" || document.getElementById("lastname").value === "" || document.getElementById("phone").value === "" ||
        document.getElementById("email").value === "")  console.log("Please fill in all fields.");
       else{
-    newContact =  {firstName: document.getElementById("firstName").value, lastName: document.getElementById("lastName").value,
-    phone: document.getElementById("edit-phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get("emailID"), cid: thisCid};
+    newContact =  {firstname: document.getElementById("firstname").value, lastname: document.getElementById("lastname").value,
+    phone: document.getElementById("phone").value, cemail: document.getElementById("email").value, uemail: Cookies.get("emailID"), cid: thisCid};
     dbContactEdit(newContact);
     clearFields();
   }
@@ -143,13 +143,13 @@ function openContact(cid) {
   buttonControls();
 	// Hide the "add new contact" page
 	document.getElementById('contactPanel').style.display = "block";
-  document.getElementById("firstName").value = contact.firstName;
-  document.getElementById("lastName").value = contact.lastName;
+  document.getElementById("firstname").value = contact.firstname;
+  document.getElementById("lastname").value = contact.lastname;
   document.getElementById("phone").value = contact.phone;
   document.getElementById("email").value = contact.email;
   //set to read only
-  document.getElementById("firstName").readOnly = true;
-  document.getElementById("lastName").readOnly = true;
+  document.getElementById("firstname").readOnly = true;
+  document.getElementById("lastname").readOnly = true;
   document.getElementById("phone").readOnly = true;
   document.getElementById("email").readOnly = true;
   //set button visibility
@@ -161,15 +161,15 @@ function openContact(cid) {
 // A function to add a contact to the directory.
 function addContact() {
   buttonControls();
-  
+
   document.getElementById('contactPanel').style.display = "block";
-  document.getElementById("firstName").value = "";
-  document.getElementById("lastName").value = "";
+  document.getElementById("firstname").value = "";
+  document.getElementById("lastname").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
   //set to read only
-  document.getElementById("firstName").readOnly = false;
-  document.getElementById("lastName").readOnly = false;
+  document.getElementById("firstname").readOnly = false;
+  document.getElementById("lastname").readOnly = false;
   document.getElementById("phone").readOnly = false;
   document.getElementById("email").readOnly = false;
   //set button visibility
@@ -182,7 +182,7 @@ function addContact() {
 function createContact(contact) {
   let newA = document.createElement("a");
   let newLi = document.createElement("li");
-  newA.innerHTML = contact.firstName;
+  newA.innerHTML = contact.firstname;
   newA.setAttribute('href', '#');
   newA.id = contact.cid;
   newLi.appendChild(newA);
@@ -220,24 +220,24 @@ function eraseContact(oldCid) {
 function updateContact(newContact, cid){
 createContact(newContact);
 let contact = document.getElementById(newContact.cid);
-contact.innerHTML = newContact.firstName;
+contact.innerHTML = newContact.firstname;
 findContact(newContact) = newContact;
 }
 
 //show editContact page
 function editContact() {
-  
+
   let contact = findContact(thisCid);
   document.getElementById('contactPanel').style.display = "block";
   // Hide edit and delete buttons.
 
-  document.getElementById("firstName").value = contact.firstName;
-  document.getElementById("lastName").value = contact.lastName;
+  document.getElementById("firstname").value = contact.firstname;
+  document.getElementById("lastname").value = contact.lastname;
   document.getElementById("phone").value = contact.phone;
   document.getElementById("email").value = contact.email;
 
-  document.getElementById("firstName").readOnly = true;
-  document.getElementById("lastName").readOnly = true;
+  document.getElementById("firstname").readOnly = true;
+  document.getElementById("lastname").readOnly = true;
   document.getElementById("phone").readOnly = false;
   document.getElementById("email").readOnly = false;
 
