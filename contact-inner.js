@@ -248,6 +248,7 @@ findContact(newContact) = newContact;
 function editContact() {
   var x = document.getElementById("editPanel"), y;
   let contact = findContact(thisCid);
+  console.log(contact);
   buttonControls();
   // Hide edit and delete buttons.
   document.getElementById('delete').style.display = "none";
