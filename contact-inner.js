@@ -241,7 +241,7 @@ function updateContact(newContact){
   createContact(newContact);
 let contact = document.getElementById(newContact.cid);
 contact.innerHTML = newContact.firstName;
-findContact(newContact.cid) = newContact;
+findContact(newContact) = newContact;
 }
 
 //show editContact page
