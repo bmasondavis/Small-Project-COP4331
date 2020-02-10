@@ -137,7 +137,7 @@ function findContact(cid) {
     if(cache[i].cid = cid) return cache[i];
 }
 
-function openContact(contact, cid) {
+function openContact(newContact, cid) {
   var i, x, y, z, m, tabcontent, tablinks;
   // Display edit and delete buttons.
   document.getElementById('delete').style.display = "block";
@@ -162,7 +162,7 @@ function openContact(contact, cid) {
 	x.style.display = 'none';
   let contact = document.getElementById("contactInfo");
   console.log(contactName);
-  document.getElementById("contactHeader").innerHTML = contact.firstName + " " + contact.lastName;
+  document.getElementById("contactHeader").innerHTML = newContact.firstName + " " + newContact.lastName;
 	contact.style.display = "block";
   document.getElementById("contactBtns").style.display = "block";
 }
