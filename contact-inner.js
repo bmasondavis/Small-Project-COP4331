@@ -95,7 +95,7 @@ xmlhttp.onreadystatechange = function() {
   }
   xmlhttp.open("POST", "EditContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(jsonObj);
+  xmlhttp.send(contactObj);
 }
 
 function dbContactCreate(newContact) {
