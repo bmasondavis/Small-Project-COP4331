@@ -199,6 +199,7 @@ function addContact() {
 
 //function to create contact on sidebar
 function createContact(contact) {
+  console.log(contact);
   let newA = document.createElement("a");
   let newLi = document.createElement("li");
   newA.innerHTML = contact.firstName;
@@ -237,6 +238,7 @@ function eraseContact(oldCid) {
 
 //update sidebar and cache
 function updateContact(newContact){
+  createContact(newContact);
 let contact = document.getElementById(newContact.cid);
 contact.innerHTML = newContact.firstName;
 findContact(newContact) = newContact;
