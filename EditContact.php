@@ -25,8 +25,8 @@ $uid = $result[0];
 // Potential error. Does update happen first, or does WHERE? If update, we need to redo. 
 
 // ^^^^ All happens at once, think of the later lines as constraints to the same call
-$sql = "UPDATE contacts SET (firstname = '$fname', lastname = '$lname',
-                            phone = '$phone', email = '$cemail')
+$sql = "UPDATE contacts SET firstname = '$fname', lastname = '$lname',
+                            phone = '$phone', email = '$cemail'
                             WHERE cid = '$cid'  
                             && uid = '$uid'"; 
 
