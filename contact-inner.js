@@ -11,7 +11,7 @@ populate(document.getElementById("search").value, Cookies.get("emailID"));
 });
 
 populate("", Cookies.get("emailID"));
-
+buttonControls();
 //delete cache and reset sidebar
 function clearCache(){
 cache = new Array();
@@ -155,8 +155,7 @@ function contactIndex(cid) {
 }
 
 function openContact(contact) {
-  // Display edit and delete buttons.
-  buttonControls();
+  
 	// Hide the "add new contact" page
   document.getElementById('panelHeader').innerText = "Contact Info";
   thisCid = contact.cid;
@@ -178,7 +177,6 @@ function openContact(contact) {
 
 // A function to add a contact to the directory.
 function addContact() {
-  buttonControls();
   document.getElementById('panelHeader').innerText = "Create Contact";
   document.getElementById('contactPanel').style.display = "block";
   document.getElementById("firstname").value = "";
