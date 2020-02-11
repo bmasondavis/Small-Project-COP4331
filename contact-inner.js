@@ -225,6 +225,9 @@ function searchFunction() {
 
 //delete from cache and sidebar
 function eraseContact(cid) {
+  var result = confirm("Want to delete?");
+  if (result) {
+    
   let index = contactIndex(cid);
   cache.splice(index, 1);
   //let li = document.getElementById(cid).parentElement;
@@ -234,6 +237,7 @@ function eraseContact(cid) {
       element.removeChild(element.firstChild);
   }
   populate("", Cookies.get("emailID"));
+  }
 }
 
 //update sidebar and cache
