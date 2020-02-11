@@ -91,13 +91,13 @@ function dbContactEdit(newContact) {
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       let newContact = JSON.parse(xmlhttp.responseText);
-       if(newContact.error == 0) {
+       let responseObj = JSON.parse(xmlhttp.responseText);
+       if(responseObj.error == 0) {
         let savedContact = {firstname: newContact.firstname, lastname: newContact.lastname,
         phone: newContact.phone, email: newContact.cemail, cid: newContact.cid};
         updateContact(savedContact);
        }
-       else console.log("error: " + newContact.error);
+       else console.log("error: " + responseObj.error);
     }
   }
 
