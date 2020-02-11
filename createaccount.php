@@ -13,9 +13,11 @@ $data = json_decode(file_get_contents('php://input'), true);
 $woah = $data["name"];
 $waah = $data["email"];
 $eme = $data["password"];
+// salt and hash password
+$pass = password_hash($eme, PASSWORD_DEFAULT)
 
 // Add the values into the database from the front end. 
-$sql = "INSERT INTO users (username, email, password) VALUES ('$woah','$waah','$eme')"; 
+$sql = "INSERT INTO users (username, email, password) VALUES ('$woah','$waah','$pass')";
 $sql2 = "select * from users where email = '$waah'";
 
 // Query the database for an existing user. If there is no user, make an account. 
