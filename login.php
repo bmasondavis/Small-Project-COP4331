@@ -31,7 +31,7 @@ $sql = "select * from users where email = '$email' && password = '$hash'";
 $row = $conn->query($sql);
 
 // If the user matches what is in the database, return the email.
-if (password_verify($password, $hash))
+if (password_verify($pass, $hash))
     {
     if(mysqli_num_rows($row) === 1)
         {
