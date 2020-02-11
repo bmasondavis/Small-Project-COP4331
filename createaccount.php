@@ -14,7 +14,7 @@ $woah = $data["name"];
 $waah = $data["email"];
 $eme = $data["password"];
 // salt and hash password
-$pass = password_hash($eme, PASSWORD_DEFAULT)
+$pass = password_hash($eme, PASSWORD_DEFAULT);
 
 // Add the values into the database from the front end. 
 $sql = "INSERT INTO users (username, email, password) VALUES ('$woah','$waah','$pass')";
