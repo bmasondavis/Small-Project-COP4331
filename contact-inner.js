@@ -92,6 +92,7 @@ xmlhttp.onreadystatechange = function() {
        else console.log("error: " + responseObj.error);
     }
   }
+
   xmlhttp.open("POST", "EditContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send(contactObj);
@@ -134,6 +135,10 @@ xmlhttp.onreadystatechange = function() {
 function findContact(cid) {
   for(let i = 0; i < cache.length; i++)
     if(cache[i].cid == cid) return cache[i];
+}
+function contactIndex(cid) {
+  for(let i = 0; i < cache.length; i++)
+    if(cache[i].cid == cid) return i;
 }
 
 function openContact(contact) {
@@ -186,7 +191,7 @@ function createContact(contact) {
   newA.setAttribute('href', '#');
   newA.id = contact.cid;
   newLi.appendChild(newA);
-  newLi.addEventListener('click', ()=> openContact(contact, newA.id));
+  newLi.addEventListener('click', ()=> openContact(cache[findIndex(newA.id)], newA.id));
   document.getElementById("tablinks").appendChild(newLi);
 }
 
@@ -217,11 +222,10 @@ function eraseContact(oldCid) {
 }
 
 //update sidebar and cache
-function updateContact(newContact, cid){
-createContact(newContact);
-let contact = document.getElementById(newContact.cid);
-contact.innerHTML = newContact.firstname;
-findContact(newContact) = newContact;
+function updateContact(newContact){
+let index = contactindex(newContact.cid);
+cache[index] = newContact;
+document.getElementById(newContact.cid).innerHTML = newContact.firstname;
 }
 
 //show editContact page
