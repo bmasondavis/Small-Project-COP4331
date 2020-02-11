@@ -237,6 +237,14 @@ function eraseContact(cid) {
       element.removeChild(element.firstChild);
   }
   populate("", Cookies.get("emailID"));
+  document.getElementById('panelHeader').innerText = "Contact Deleted!";
+  document.getElementById("firstname").style.display = "none";
+  document.getElementById("lastname").style.display = "none";
+  document.getElementById("phone").style.display = "none";
+  document.getElementById("email").style.display = "none";
+  document.getElementById("addContact-btns").style.display = "none";
+  document.getElementById("panel-btns").style.display = "none";
+  document.getElementById("edit-btns").style.display = "none";
   }
 }
 
