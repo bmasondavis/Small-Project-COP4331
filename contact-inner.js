@@ -139,7 +139,7 @@ xmlhttp.onreadystatechange = function() {
   }
   xmlhttp.open("POST", "DeleteContact.php", true);
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send(jsonObj);
+  xmlhttp.send(contactObj);
 }
 
 function findContact(cid) {
