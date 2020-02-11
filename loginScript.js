@@ -26,7 +26,7 @@ xmlhttp.onreadystatechange = function() {
 
        let responseObj = JSON.parse(xmlhttp.responseText);
        console.log(xmlhttp.responseText);
-       if(responseObj.error === 202) alert("error code: 202");
+       if(responseObj.error === 202) console.log("error code: 202");
        else if(responseObj.error === 0) {
        	Cookies.set("emailID", email, {expires: 7});
        	window.location.href = 'contact-inner.html';
