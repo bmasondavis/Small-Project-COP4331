@@ -48,7 +48,10 @@ function buttonControls() {
   });
 
   document.getElementById("delete").addEventListener('click', () =>{
-    deleteContact(thisCid);
+    var result = confirm("Want to delete?");
+    if (result) {
+      deleteContact(thisCid);
+    }
   });
 
   document.getElementById("edit-submit").addEventListener('click', () =>{
@@ -224,10 +227,7 @@ function searchFunction() {
 }
 
 //delete from cache and sidebar
-function eraseContact(cid) {
-  var result = confirm("Want to delete?");
-  if (result) {
-    
+function eraseContact(cid) { 
   let index = contactIndex(cid);
   cache.splice(index, 1);
   //let li = document.getElementById(cid).parentElement;
@@ -238,14 +238,14 @@ function eraseContact(cid) {
   }
   populate("", Cookies.get("emailID"));
   document.getElementById('panelHeader').innerText = "Contact Deleted!";
-  document.getElementById("firstname").value = "N/A";
-  document.getElementById("lastname").value = "N/A";
-  document.getElementById("phone").value = "N/A";
-  document.getElementById("email").value = "N/A";
+  document.getElementById("firstname").style.display = "none";
+  document.getElementById("lastname").style.display = "none";
+  document.getElementById("phone").style.display = "none";
+  document.getElementById("email").style.display = "none";
   document.getElementById("addContact-btns").style.display = "none";
   document.getElementById("panel-btns").style.display = "none";
   document.getElementById("edit-btns").style.display = "none";
-  }
+  
 }
 
 //update sidebar and cache
