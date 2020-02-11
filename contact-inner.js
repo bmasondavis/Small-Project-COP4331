@@ -227,8 +227,8 @@ function searchFunction() {
 function eraseContact(cid) {
   let index = contactIndex(cid);
   cache.splice(index, 1);
-  let li = document.getElementById(cid).parentElement.nodeName;
-  li.parentNode.removeChild(li);
+  let li = document.getElementById(cid).parentNode.nodeName;
+  document.getElementById("tablinks").removeChild(li);
 }
 
 //update sidebar and cache
