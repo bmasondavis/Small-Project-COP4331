@@ -229,6 +229,10 @@ function eraseContact(cid) {
   cache.splice(index, 1);
   let li = document.getElementById(cid).parentElement;
   document.getElementById("tablinks").removeChild(li);
+  var element = document.getElementById("tablinks")
+    while(element.firstChild){
+      element.removeChild(element.firstChild);
+    }
 }
 
 //update sidebar and cache
