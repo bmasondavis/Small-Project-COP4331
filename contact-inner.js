@@ -228,7 +228,7 @@ function eraseContact(cid) {
   let index = contactIndex(cid);
   cache.splice(index, 1);
   let li = document.getElementById(cid).parentElement.nodeName;
-  li.remove();
+  li.parentNode.removeChild(li);
 }
 
 //update sidebar and cache
