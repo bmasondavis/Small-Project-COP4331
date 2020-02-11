@@ -41,7 +41,7 @@ xmlhttp.send(jsonObj);
 }
 
 function login(email, pass) {
-	let loginInfo = {email: email, pass: pass};
+	let loginInfo = {email: email, password: pass};
 	let jsonObj = JSON.stringify(loginInfo);
 const xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
