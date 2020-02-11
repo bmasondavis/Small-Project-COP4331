@@ -106,7 +106,9 @@ xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        newContact.cid = xmlhttp.responseText;
        cache.push(newContact);
-       createContact(newContact);
+       let savedContact = {firstname: newContact.firstname, lastname: newContact.lastname,
+        phone: newContact.phone, email: newContact.cemail, cid: newContact.cid};
+       createContact(savedContact);
     }
   }
   xmlhttp.open("POST", "AddContact.php", true);
@@ -226,6 +228,7 @@ function updateContact(newContact){
 let index = contactIndex(newContact.cid);
 cache[index] = newContact;
 document.getElementById(newContact.cid).innerHTML = newContact.firstname;
+openContact(newContact);
 }
 
 //show editContact page
