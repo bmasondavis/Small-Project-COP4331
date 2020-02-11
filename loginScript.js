@@ -64,11 +64,11 @@ xmlhttp.send(jsonObj);
 
 function checkParam(field , param) {
 	if(param.length == 0) {
-		alert(field + " field empty!");
+		//alert(field + " field empty!");
 		return 1;
 	}
 	if(param.length > 29 ) {
-		alert(field + " field too many characters!");
+		//alert(field + " field too many characters!");
 		return 2;
 	}
 
