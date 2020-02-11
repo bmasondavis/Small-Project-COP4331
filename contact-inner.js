@@ -230,9 +230,10 @@ function eraseContact(cid) {
   let li = document.getElementById(cid).parentElement;
   document.getElementById("tablinks").removeChild(li);
   var element = document.getElementById("tablinks")
-    while(element.firstChild){
+  while(element.firstChild){
       element.removeChild(element.firstChild);
-    }
+  }
+  populate("", Cookies.get("emailID"));
 }
 
 //update sidebar and cache
