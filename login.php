@@ -13,7 +13,8 @@ $pass = $data["password"];
 
 $sql3 = "select password from users where email = '$email'";
 $result = $conn->query($sql3);
-$hash = mysqli_fetch_row($result);
+$prehash = mysqli_fetch_row($result);
+$hash = $prehash[0];
 
 
 // Find the email and password in the database
