@@ -47,6 +47,10 @@ function buttonControls() {
   }
   });
 
+  document.getElementById("delete").addEventListener('click', () =>{
+    deleteContact(thisCid);
+  });
+
   document.getElementById("edit-submit").addEventListener('click', () =>{
       var fieldEmpty = "";
     if(document.getElementById("firstname").value === "" || document.getElementById("lastname").value === "" || document.getElementById("phone").value === "" ||
@@ -87,9 +91,13 @@ function dbContactEdit(newContact) {
 
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-       let responseObj = JSON.parse(xmlhttp.responseText);
-       if(responseObj.error == 0) updateContact(newContact);
-       else console.log("error: " + responseObj.error);
+       let newContact = JSON.parse(xmlhttp.responseText);
+       if(responseObj.error == 0) {
+        let savedContact = {firstname: newContact.firstname, lastname: newContact.lastname,
+        phone: newContact.phone, email: newContact.cemail, cid: newContact.cid};
+        updateContact(savedContact);
+       }
+       else console.log("error: " + newContact.error);
     }
   }
 
@@ -118,7 +126,7 @@ xmlhttp.onreadystatechange = function() {
 
 
 function deleteContact(cid) {
-  let contactObj = JSON.stringify({cid: cid});
+  let contactObj = JSON.stringify({uemail: Cookies.get("emailID"), cid: cid});
   const xmlhttp = new XMLHttpRequest();
 
 xmlhttp.onreadystatechange = function() {
@@ -216,10 +224,10 @@ function searchFunction() {
 }
 
 //delete from cache and sidebar
-function eraseContact(oldCid) {
-  let index = contactIndex;
+function eraseContact(cid) {
+  let index = contactIndex(cid);
   cache.splice(index, 1);
-  let li = document.getElementById(oldCid).parentElement.nodeName;
+  let li = document.getElementById(cid).parentElement.nodeName;
   li.remove();
 }
 
