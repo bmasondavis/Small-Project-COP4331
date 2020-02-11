@@ -238,10 +238,10 @@ function eraseContact(cid) {
   }
   populate("", Cookies.get("emailID"));
   document.getElementById('panelHeader').innerText = "Contact Deleted!";
-  document.getElementById("firstname").style.display = "none";
-  document.getElementById("lastname").style.display = "none";
-  document.getElementById("phone").style.display = "none";
-  document.getElementById("email").style.display = "none";
+  document.getElementById("firstname").value = "N/A";
+  document.getElementById("lastname").value = "N/A";
+  document.getElementById("phone").value = "N/A";
+  document.getElementById("email").value = "N/A";
   document.getElementById("addContact-btns").style.display = "none";
   document.getElementById("panel-btns").style.display = "none";
   document.getElementById("edit-btns").style.display = "none";
