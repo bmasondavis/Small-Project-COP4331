@@ -215,7 +215,7 @@ function searchFunction() {
 
 //delete from cache and sidebar
 function eraseContact(oldCid) {
-  let index = cache.findIndex(findContact(oldCid));
+  let index = contactIndex;
   cache.splice(index, 1);
   let li = document.getElementById(oldCid).parentElement.nodeName;
   li.remove();
@@ -223,7 +223,7 @@ function eraseContact(oldCid) {
 
 //update sidebar and cache
 function updateContact(newContact){
-let index = contactindex(newContact.cid);
+let index = contactIndex(newContact.cid);
 cache[index] = newContact;
 document.getElementById(newContact.cid).innerHTML = newContact.firstname;
 }
