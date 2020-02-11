@@ -191,7 +191,7 @@ function createContact(contact) {
   newA.setAttribute('href', '#');
   newA.id = contact.cid;
   newLi.appendChild(newA);
-  newLi.addEventListener('click', ()=> openContact(cache[findIndex(newA.id)], newA.id));
+  newLi.addEventListener('click', ()=> openContact(cache[contactIndex(newA.id)], newA.id));
   document.getElementById("tablinks").appendChild(newLi);
 }
 
