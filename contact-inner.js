@@ -113,9 +113,9 @@ function dbContactCreate(newContact) {
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
        newContact.cid = xmlhttp.responseText;
-       cache.push(newContact);
        let savedContact = {firstname: newContact.firstname, lastname: newContact.lastname,
         phone: newContact.phone, email: newContact.cemail, cid: newContact.cid};
+        cache.push(savedContact);
        createContact(savedContact);
     }
   }
